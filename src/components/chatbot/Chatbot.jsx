@@ -12,16 +12,16 @@ const Chatbot = () => {
   // API integration for bot responses
   const getBotResponse = async (inputText) => {
     try {
-      const response = await fetch("https://my-portfolio-ai-bot.onrender.com/chat", {
+      const response = await fetch(import.meta.env.VITE_CHAT_API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ input: inputText })
+        body: JSON.stringify({ question: inputText })
       });
 
       const data = await response.json();
-      return data.response || "Sorry, I couldn't process your request at the moment.";
+      return data.status === "success" ? data.answer : "Sorry, I couldn't process your request at the moment.";
     } catch (error) {
       console.error("Error fetching bot response:", error);
       return "Sorry, I'm having trouble connecting right now. Please try again later.";
