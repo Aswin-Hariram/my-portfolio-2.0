@@ -13,7 +13,7 @@ import Chatbot from "./components/chatbot/Chatbot";
 import Sidebar from "./components/sidebar/Sidebar";
 import Portfolio from "./components/portfolio/Portfolio";
 import Academics from "./components/academics/academics"; // Updated import path
-
+import { Analytics } from "@vercel/analytics/react"
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
