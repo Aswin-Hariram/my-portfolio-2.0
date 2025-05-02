@@ -33,7 +33,7 @@ const AcademicsData = [
     }
 ];
 
-const Academics = () => {
+const academics = () => {
     const ref = useRef();
     const isInView = useInView(ref, { margin: "-100px" });
 
@@ -195,4 +195,4 @@ const Academics = () => {
     );
 };
 
-export default Academics;
+export default academics;

@@ -7,12 +7,12 @@ import Navbar from "./components/navbar/Navbar";
 import Parallax from "./components/parallax/Parallax";
 import Services from "./components/services/Services";
 import Skills from "./components/skills/Skills";
-import Academics from "./components/Academics/Academics";
 import About from "./components/about/About";
 import Loader from "./components/loader/Loader";
 import Chatbot from "./components/chatbot/Chatbot";
 import Sidebar from "./components/sidebar/Sidebar";
-import Portfolio from "./components/portfolio/Portfolio"; // Add this import
+import Portfolio from "./components/portfolio/Portfolio";
+import Academics from "./components/academics/Academics"; // Add this import
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
