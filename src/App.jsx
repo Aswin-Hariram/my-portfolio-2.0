@@ -14,6 +14,7 @@ import Sidebar from "./components/sidebar/Sidebar";
 import Portfolio from "./components/portfolio/Portfolio";
 import Academics from "./components/academics/academics"; // Updated import path
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -42,6 +43,8 @@ const App = () => {
   return (
     <div>
       {isLoading && <Loader />}
+      <Analytics />
+      <SpeedInsights />
       
       {!isLoading && (
         <>

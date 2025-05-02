@@ -91,7 +91,7 @@ const skillsData = [
 
 const Skills = () => {
     const ref = useRef();
-    const isInView = useInView(ref, { margin: "-100px", once: false });
+    const isInView = useInView(ref, { margin: "-100px", once: true });
 
     return (
         <motion.div

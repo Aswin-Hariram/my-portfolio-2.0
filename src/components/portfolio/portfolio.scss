@@ -13,7 +13,7 @@
   padding: 130px 0;
   position: relative;
   
-  /* Enhanced animated background with modern glass morphism effect */
+  /* Simple static background elements */
   &::before {
     content: '';
     position: absolute;
@@ -30,10 +30,8 @@
       radial-gradient(circle at 90% 10%, rgba(255, 123, 0, 0.1) 0%, transparent 15%);
     pointer-events: none;
     z-index: 1;
-    animation: floatingParticles 20s ease-in-out infinite alternate;
   }
   
-  /* Add floating geometric shapes with enhanced visibility */
   &::after {
     content: '';
     position: absolute;
@@ -50,191 +48,22 @@
     background-size: 300px, 200px, 250px;
     pointer-events: none;
     z-index: 0;
-    animation: floatingShapes 25s ease-in-out infinite alternate;
-  }
-  
-  /* Add subtle noise texture overlay */
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-    opacity: 0.4;
-    mix-blend-mode: overlay;
-    pointer-events: none;
-    z-index: 2;
-  }
-  
-  /* Add animated grid lines */
-  .grid-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    pointer-events: none;
-    z-index: 0;
-    animation: gridMove 60s linear infinite;
-  }
-  
-  /* Add floating dots */
-  .floating-dots {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-      radial-gradient(rgba(255, 123, 0, 0.1) 1px, transparent 1px);
-    background-size: 30px 30px, 50px 50px;
-    background-position: 0 0, 15px 15px;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.3;
-    animation: dotsFade 8s ease-in-out infinite alternate;
-  }
-  
-  /* Add subtle glow spots */
-  .glow-spots {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-    
-    &::before, &::after {
-      content: '';
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 123, 0, 0.05) 0%, transparent 70%);
-      filter: blur(30px);
-    }
-    
-    &::before {
-      top: 20%;
-      left: 15%;
-      animation: glowMove1 15s ease-in-out infinite alternate;
-    }
-    
-    &::after {
-      bottom: 30%;
-      right: 10%;
-      width: 250px;
-      height: 250px;
-      background: radial-gradient(circle, rgba(255, 183, 0, 0.05) 0%, transparent 70%);
-      animation: glowMove2 18s ease-in-out infinite alternate;
-    }
-  }
-  
-  @keyframes floatingParticles {
-    0% {
-      background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-      opacity: 0.7;
-    }
-    100% {
-      background-position: 5% 10%, -5% 5%, 3% -5%, -3% 8%, 5% -10%, -5% -5%;
-      opacity: 1;
-    }
-  }
-  
-  @keyframes floatingShapes {
-    0% {
-      background-position: 10% 20%, 85% 70%, 50% 50%;
-      background-size: 300px, 200px, 250px;
-      opacity: 0.7;
-    }
-    100% {
-      background-position: 15% 25%, 80% 65%, 45% 55%;
-      background-size: 320px, 220px, 270px;
-      opacity: 1;
-    }
-  }
-  
-  @keyframes gridMove {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 50px 50px;
-    }
-  }
-  
-  @keyframes dotsFade {
-    0% {
-      opacity: 0.2;
-      transform: translateY(0);
-    }
-    100% {
-      opacity: 0.4;
-      transform: translateY(10px);
-    }
-  }
-  
-  @keyframes glowMove1 {
-    0% {
-      transform: translate(0, 0);
-      opacity: 0.5;
-    }
-    100% {
-      transform: translate(50px, 30px);
-      opacity: 0.8;
-    }
-  }
-  
-  @keyframes glowMove2 {
-    0% {
-      transform: translate(0, 0);
-      opacity: 0.5;
-    }
-    100% {
-      transform: translate(-30px, -50px);
-      opacity: 0.8;
-    }
   }
   
   @include mobile {
     min-height: auto;
-    max-height: none; /* Remove max-height constraint on mobile */
+    max-height: none;
     padding: 40px 0 60px;
     overflow: visible;
     position: relative;
     
-    .grid-background, .floating-dots, .glow-spots {
-      display: none; /* Hide complex backgrounds on mobile for better performance */
+    /* Simplify background for mobile */
+    &::before, &::after {
+      display: none; /* Hide decorative backgrounds on mobile */
     }
   }
-  
-  // Add the new background elements to the DOM
-  &::before {
-    content: '';
-  }
-  
-  &::after {
-    content: '';
-  }
-  
-  &::after {
-    content: '';
-    position: relative;
-  }
-  
-  .grid-background, .floating-dots, .glow-spots {
-    content: '';
-  }
 
+  // Title container styles remain unchanged
   .titleContainer {
     display: flex;
     flex-direction: column;
@@ -267,20 +96,6 @@
         -webkit-text-fill-color: transparent;
         display: inline-block;
         position: relative;
-        
-        /* Add subtle glow effect to highlight */
-        &::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          filter: blur(15px);
-          background: linear-gradient(90deg, rgba(255, 123, 0, 0.4), rgba(255, 183, 0, 0.4));
-          opacity: 0.5;
-          z-index: -1;
-        }
       }
     }
 
@@ -320,8 +135,12 @@
         font-size: 14px;
         cursor: pointer;
         transition: all 0.3s ease;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
+        
+        @include mobile {
+          /* Remove backdrop-filter on mobile as it's performance-heavy */
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
         
         &:hover {
           background: rgba(255, 123, 0, 0.1);
@@ -334,12 +153,6 @@
           border: 1px solid rgba(255, 123, 0, 0.5);
           color: #ff9d4d;
           font-weight: 500;
-          box-shadow: 0 0 15px rgba(255, 123, 0, 0.3);
-        }
-        
-        @include mobile {
-          font-size: 12px;
-          padding: 6px 12px;
         }
       }
     }
@@ -358,6 +171,7 @@
       gap: 20px;
     }
 
+    // Project card styles
     .projectCard {
       flex: 0 0 calc(33.333% - 30px);
       background: rgba(255, 255, 255, 0.03);
@@ -365,11 +179,16 @@
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
-      transform-style: preserve-3d;
-      perspective: 1000px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      opacity: 1; /* Changed from 0 to 1 to make cards visible by default */
+      transform: translateY(0); /* Changed from translateY(20px) to make cards in position by default */
+      
+      /* Keep the animation classes for when you want to use them */
+      &.visible, &.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
       
       @include tablet {
         flex: 0 0 calc(50% - 20px);
@@ -377,8 +196,12 @@
 
       @include mobile {
         flex: 0 0 100%;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        transition: transform 0.2s ease;
       }
 
+      // Image container styles remain unchanged
       .imageContainer {
         position: relative;
         height: 200px;
@@ -389,6 +212,11 @@
           height: 100%;
           object-fit: cover;
           transition: transform 0.5s ease;
+          
+          @include mobile {
+            /* Simplify transitions for mobile */
+            transition: transform 0.2s ease;
+          }
         }
 
         .overlay {
@@ -403,6 +231,11 @@
           justify-content: center;
           opacity: 0;
           transition: opacity 0.3s ease;
+          
+          @include mobile {
+            /* Simplify transitions for mobile */
+            transition: opacity 0.2s ease;
+          }
 
           .viewButton {
             padding: 10px 20px;
@@ -466,10 +299,11 @@
             border-radius: 20px;
             font-size: 14px;
             color: #ff9d4d;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-
+            
             @include mobile {
+              /* Remove backdrop-filter on mobile */
+              backdrop-filter: none;
+              -webkit-backdrop-filter: none;
               font-size: 12px;
               padding: 4px 10px;
             }
@@ -482,230 +316,349 @@
         border-color: rgba(255, 123, 0, 0.4);
         background: rgba(255, 255, 255, 0.07);
         transform: translateY(-5px);
+        
+        @include mobile {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+      }
+      
+      // Skeleton styles for loading state
+      &.skeleton {
+        opacity: 1;
+        transform: translateY(0);
+        background: rgba(255, 255, 255, 0.03);
+        animation: pulse 1.5s infinite ease-in-out;
+        
+        .skeleton-image {
+          height: 200px;
+          background: linear-gradient(90deg, 
+            rgba(255, 255, 255, 0.03) 0%, 
+            rgba(255, 255, 255, 0.06) 50%, 
+            rgba(255, 255, 255, 0.03) 100%);
+          background-size: 200% 100%;
+          animation: shimmer 2s infinite;
+        }
+        
+        .skeleton-title {
+          height: 24px;
+          width: 70%;
+          margin: 0 0 15px 0;
+          background: rgba(255, 255, 255, 0.06);
+          border-radius: 4px;
+        }
+        
+        .skeleton-text {
+          height: 16px;
+          width: 90%;
+          margin-bottom: 15px;
+          background: rgba(255, 255, 255, 0.04);
+          border-radius: 4px;
+        }
+        
+        .skeleton-tags {
+          display: flex;
+          gap: 8px;
+          
+          span {
+            height: 24px;
+            width: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+          }
+        }
       }
     }
   }
 }
 
-/* Add these new background elements and enhancements */
+// Add these new animation styles to your existing SCSS file
 
-/* Add animated stars background */
-.stars-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(1px 1px at 25% 15%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 50% 40%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 75% 75%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
-    radial-gradient(2px 2px at 20% 60%, rgba(255, 255, 255, 0.3) 0%, transparent 100%),
-    radial-gradient(2.5px 2.5px at 85% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 10% 90%, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.4;
-  animation: twinkleStars 8s ease-in-out infinite alternate;
+// Title animations
+.animated-title {
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
 }
 
-/* Add animated gradient orbs */
-.gradient-orbs {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
+.animated-text {
+  animation: fadeInUp 0.8s 0.2s ease forwards;
+  opacity: 0;
+}
+
+// Filter button animations
+.filterButton {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
   
-  &::before, &::after, .orb {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.15;
-    animation-duration: 20s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  // Add animation delay based on button index
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{0.1 * $i}s;
+    }
   }
   
-  &::before {
-    width: 400px;
-    height: 400px;
-    top: -100px;
-    left: -100px;
-    background: radial-gradient(circle, rgba(255, 123, 0, 0.3) 0%, transparent 70%);
-    animation-name: orbFloat1;
-  }
-  
-  &::after {
-    width: 350px;
-    height: 350px;
-    bottom: -50px;
-    right: -50px;
-    background: radial-gradient(circle, rgba(255, 183, 0, 0.3) 0%, transparent 70%);
-    animation-name: orbFloat2;
-  }
-  
-  .orb {
-    width: 300px;
-    height: 300px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(100, 100, 255, 0.2) 0%, transparent 70%);
-    animation-name: orbFloat3;
+  &.active {
+    // Change this to ensure the active button is always visible
+    // while still having the pulse effect
+    opacity: 1;
+    animation: pulseActive 2s infinite;
+    animation-delay: 0.5s; // Delay the pulse until after the button appears
   }
 }
 
-/* Add animated line effect */
-.line-effect {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
+// Project card animations
+.projectCard {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   
-  &::before, &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      rgba(255, 255, 255, 0.05) 15%, 
-      rgba(255, 123, 0, 0.1) 50%, 
-      rgba(255, 255, 255, 0.05) 85%, 
-      transparent 100%);
-    animation-duration: 15s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
   
-  &::before {
-    top: 33%;
-    animation-name: lineMove1;
+  &.exit-animation {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.3s ease;
   }
   
-  &::after {
-    top: 66%;
-    animation-name: lineMove2;
-    animation-delay: -7.5s;
-  }
-}
-
-/* Enhanced particle effect */
-.enhanced-particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  
-  .particle {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.2);
-    animation: particleFloat 15s linear infinite;
+  // 3D hover effect
+  &:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 123, 0, 0.4);
+    background: rgba(255, 255, 255, 0.07);
+    transition: all 0.3s ease, transform 0.2s ease;
     
-    &:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
-    &:nth-child(2) { top: 30%; left: 80%; animation-delay: -2s; }
-    &:nth-child(3) { top: 70%; left: 40%; animation-delay: -4s; }
-    &:nth-child(4) { top: 50%; left: 10%; animation-delay: -6s; }
-    &:nth-child(5) { top: 20%; left: 60%; animation-delay: -8s; }
-    &:nth-child(6) { top: 80%; left: 30%; animation-delay: -10s; }
-    &:nth-child(7) { top: 40%; left: 90%; animation-delay: -12s; }
-    &:nth-child(8) { top: 60%; left: 70%; animation-delay: -14s; }
+    .imageContainer img {
+      transform: scale(1.1);
+    }
+    
+    .overlay {
+      opacity: 1;
+    }
+    
+    .tag {
+      animation: tagPulse 1s ease infinite alternate;
+    }
   }
 }
 
-/* Add new animations */
-@keyframes twinkleStars {
+// Tag animations
+.tag {
+  opacity: 0;
+  animation: fadeInRight 0.5s ease forwards;
+  transform-origin: left center;
+}
+
+// Button animation
+.viewButton {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  .button-icon {
+    display: inline-block;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(255, 123, 0, 0.4);
+    
+    .button-icon {
+      transform: translateX(4px);
+    }
+    
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.5);
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.3s ease;
+  }
+}
+
+// Animation keyframes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulseActive {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 123, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(255, 123, 0, 0);
+  }
+}
+
+@keyframes tagPulse {
   0% {
-    opacity: 0.3;
     transform: scale(1);
   }
   100% {
-    opacity: 0.6;
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 }
 
-@keyframes orbFloat1 {
+// Add this to your existing animation-complete class
+.animation-complete .projectCard {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+@keyframes shimmer {
   0% {
-    transform: translate(0, 0);
-    opacity: 0.1;
+    background-position: 200% 0;
   }
   100% {
-    transform: translate(100px, 50px);
-    opacity: 0.2;
+    background-position: -200% 0;
   }
 }
 
-@keyframes orbFloat2 {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0.1;
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
   }
-  100% {
-    transform: translate(-80px, -100px);
-    opacity: 0.2;
-  }
-}
-
-@keyframes orbFloat3 {
-  0% {
-    transform: translate(-50%, -50%) scale(0.9);
-    opacity: 0.1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.1);
-    opacity: 0.2;
-  }
-}
-
-@keyframes lineMove1 {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes lineMove2 {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes particleFloat {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
+  50% {
     opacity: 0.8;
   }
-  90% {
-    opacity: 0.8;
+}
+
+// Add these styles to your existing portfolio.scss file
+
+// Loading animation
+.loading-indicator {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+}
+
+// Project grid container
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+}
+
+// Enhance tag animations
+.tag {
+  transition: all 0.3s ease;
+}
+
+// Enhance button icon animation
+.button-icon {
+  display: inline-block;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.viewButton:hover .button-icon {
+  transform: translateX(4px);
+}
+
+.projectCard {
+  &.image-loading {
+    .imageContainer img {
+      opacity: 0;
+    }
   }
-  100% {
-    transform: translateY(-100vh) rotate(360deg);
-    opacity: 0;
+  
+  &.image-loaded {
+    .imageContainer img {
+      opacity: 1;
+      transition: opacity 0.3s ease-in;
+    }
+  }
+}
+
+.project-image {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+  
+  &.loaded {
+    opacity: 1;
+  }
+}
+
+// Add these performance optimizations to your existing CSS
+
+.projectCard {
+  will-change: transform, opacity;
+  transform: translateZ(0); // Force GPU acceleration
+  backface-visibility: hidden;
+  
+  @media (max-width: 738px) { // Mobile
+    /* Disable 3D transforms completely on mobile */
+    transform: none !important;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Remove backdrop-filter on mobile as it's performance-heavy */
+    .tag {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+}
+
+/* Optimize animations for mobile */
+@media (max-width: 738px) {
+  .portfolio {
+    .titleContainer {
+      .title, .description, .filterContainer {
+        will-change: opacity;
+      }
+    }
+    
+    .projectsContainer {
+      will-change: opacity;
+    }
+    
+    /* Reduce animation complexity */
+    .loading-indicator, .error-message, .no-projects-message {
+      opacity: 1 !important;
+      transform: none !important;
+    }
   }
 }
   

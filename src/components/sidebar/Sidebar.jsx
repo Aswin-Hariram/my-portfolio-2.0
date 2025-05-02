@@ -28,6 +28,7 @@ const Sidebar = ({ items = ["Home", "About", "Academics", "Services", "Skills", 
   const [isScrolling, setIsScrolling] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const sidebarRef = useRef(null);
+  const scrollTimerRef = useRef(null); // Add this line to store the timer reference
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,21 +37,26 @@ const Sidebar = ({ items = ["Home", "About", "Academics", "Services", "Skills", 
       // Determine if user is actively scrolling
       if (Math.abs(currentScrollY - lastScrollY) > 10) {
         setIsScrolling(true);
-        clearTimeout(scrollTimer);
+        if (scrollTimerRef.current) {
+          clearTimeout(scrollTimerRef.current);
+        }
       }
       
       setLastScrollY(currentScrollY);
       
       // Set a timer to hide the scrolling state after scrolling stops
-      const scrollTimer = setTimeout(() => {
+      scrollTimerRef.current = setTimeout(() => {
         setIsScrolling(false);
       }, 1000);
-      
-      return () => clearTimeout(scrollTimer);
     };
     
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimerRef.current) {
+        clearTimeout(scrollTimerRef.current);
+      }
+    };
   }, [lastScrollY]);
 
   // Add click outside handler

@@ -21,55 +21,13 @@
   @include mobile {
     padding: 3rem 0.75rem 4rem;
     min-height: auto;
-  }
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 20% 30%, rgba(255, 123, 0, 0.05) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  
-  .floating-particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1;
     
-    &::before, &::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background-image: 
-        radial-gradient(circle at 85% 15%, rgba(255, 183, 0, 0.1) 0%, transparent 25%),
-        radial-gradient(circle at 15% 85%, rgba(255, 123, 0, 0.08) 0%, transparent 25%);
-      opacity: 0.8;
-      animation: float 15s infinite alternate ease-in-out;
+    .floating-particles {
+      &::before, &::after {
+        animation-duration: 10s; // Reduced animation duration for mobile
+        will-change: transform; // Performance optimization
+      }
     }
-    
-    &::after {
-      background-image: 
-        radial-gradient(circle at 30% 25%, rgba(255, 183, 0, 0.05) 0%, transparent 20%),
-        radial-gradient(circle at 70% 75%, rgba(255, 123, 0, 0.05) 0%, transparent 20%);
-      animation-duration: 25s;
-      animation-delay: 2s;
-    }
-  }
-  
-  @keyframes float {
-    0% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-10px) scale(1.05); }
-    100% { transform: translateY(5px) scale(0.95); }
   }
 }
 
@@ -143,8 +101,19 @@
     
     @include mobile {
       transform: perspective(600px) rotateY(-2deg);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 0 15px rgba(255, 123, 0, 0.08);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
       border-radius: 16px;
+      will-change: transform; // Add for better performance
+      
+      &:hover {
+        transform: perspective(600px) rotateY(0deg) translateY(-8px); // Reduced movement
+        transition: all 0.3s ease; // Faster transition
+        
+        img {
+          transform: scale(1.05); // Reduced scale effect
+          transition: transform 0.3s ease;
+        }
+      }
     }
     
     &:hover {
@@ -440,6 +409,112 @@
         }
       }
     }
+  }
+}
+
+// Add these styles at the end of your existing about.scss file
+
+// Optimized particle animations
+.floating-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none; // Ensure particles don't interfere with interactions
+  
+  .particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(90deg, #ff7b00, #ffb700);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 123, 0, 0.5); // Reduced shadow intensity
+    pointer-events: none;
+    z-index: 1;
+    will-change: transform, opacity; // Performance optimization
+  }
+}
+
+// Performance optimizations for animations
+.about-image, 
+.about-content,
+.image-wrapper {
+  will-change: transform; // Tell browser to optimize these elements for animation
+  transform: translateZ(0); // Force GPU acceleration
+}
+
+// Reduce animation complexity on mobile
+@media (max-width: 768px) {
+  .floating-particles {
+    .particle {
+      width: 4px; // Smaller particles on mobile
+      height: 4px;
+      box-shadow: 0 0 5px rgba(255, 123, 0, 0.4); // Reduced shadow
+    }
+  }
+  
+  .image-wrapper {
+    transform: none !important; // Disable 3D transforms on mobile
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: none !important;
+    }
+  }
+}
+
+// Enhanced hover effects
+.about-content {
+  .section-title {
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, #ff7b00, #ffb700);
+      border-radius: 2px;
+    }
+  }
+  
+  .personal-quote {
+    transition: all 0.3s ease;
+    
+    p, cite {
+      transition: all 0.3s ease;
+    }
+  }
+  
+  .github-calendar-wrapper {
+    border-radius: 12px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+      border-color: rgba(255, 123, 0, 0.2);
+    }
+  }
+}
+
+// Optimize float animation for mobile
+@include mobile {
+  @keyframes float {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.02); } // Reduced movement
+    100% { transform: translateY(3px) scale(0.98); }
   }
 }
   

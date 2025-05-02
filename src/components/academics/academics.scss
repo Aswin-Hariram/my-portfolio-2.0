@@ -10,7 +10,7 @@
   padding: 50px 0;
   overflow: hidden;
   
-  /* Enhanced gradient background with animation */
+  /* Static gradient background */
   &::before {
     content: '';
     position: absolute;
@@ -21,7 +21,10 @@
     background: radial-gradient(circle at 50% 50%, rgba(255, 123, 0, 0.08) 0%, transparent 70%);
     pointer-events: none;
     z-index: 1;
-    animation: pulse 8s ease-in-out infinite alternate;
+    
+    @include mobile {
+      display: none;
+    }
   }
   
   &::after {
@@ -35,23 +38,8 @@
     pointer-events: none;
     z-index: 0;
   }
-  
-  @keyframes pulse {
-    0% {
-      opacity: 0.4;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.6;
-      transform: scale(1.05);
-    }
-    100% {
-      opacity: 0.4;
-      transform: scale(1);
-    }
-  }
 
-  /* Floating particles animation */
+  /* Static particles background */
   &::before {
     content: '';
     position: absolute;
@@ -68,15 +56,9 @@
       radial-gradient(circle at 90% 10%, rgba(255, 123, 0, 0.05) 0%, transparent 8%);
     pointer-events: none;
     z-index: 1;
-    animation: floatingParticles 20s ease-in-out infinite alternate;
-  }
-  
-  @keyframes floatingParticles {
-    0% {
-      background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-    }
-    100% {
-      background-position: 5% 10%, -5% 5%, 3% -5%, -3% 8%, 5% -10%, -5% -5%;
+    
+    @include mobile {
+      display: none;
     }
   }
 
@@ -104,23 +86,11 @@
         bottom: -15px;
         left: 50%;
         transform: translateX(-50%);
-        width: 120px;
+        width: 130px;
         height: 4px;
         background: linear-gradient(90deg, #ff7b00, #ffb700);
         border-radius: 2px;
-        box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
-        animation: glowLine 3s ease-in-out infinite alternate;
-      }
-
-      @keyframes glowLine {
-        0% {
-          box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
-          width: 120px;
-        }
-        100% {
-          box-shadow: 0 0 20px rgba(255, 123, 0, 0.8);
-          width: 140px;
-        }
+        box-shadow: 0 0 15px rgba(255, 123, 0, 0.6);
       }
 
       @include mobile {
@@ -130,7 +100,7 @@
       @include minitablet {
         margin-top: 80px;
       }
-      @include tablet  {
+      @include tablet {
         margin-top: 80px;
       }
     }
@@ -155,17 +125,7 @@
       height: 100%;
       background: linear-gradient(180deg, #ff7b00, #ffb700);
       border-radius: 2px;
-      box-shadow: 0 0 15px rgba(255, 123, 0, 0.4);
-      animation: timelineGlow 4s ease-in-out infinite alternate;
-
-      @keyframes timelineGlow {
-        0% {
-          box-shadow: 0 0 15px rgba(255, 123, 0, 0.4);
-        }
-        100% {
-          box-shadow: 0 0 25px rgba(255, 123, 0, 0.7);
-        }
-      }
+      box-shadow: 0 0 20px rgba(255, 123, 0, 0.5);
 
       @include mobile {
         left: 15px;
@@ -177,9 +137,9 @@
       border-radius: 15px;
       padding: 30px 30px 30px 60px;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.4s ease;
       position: relative;
       margin-left: 40px;
+      will-change: transform, opacity;
       backdrop-filter: blur(5px);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       background-image: linear-gradient(
@@ -188,12 +148,20 @@
         rgba(255, 255, 255, 0.05) 50%, 
         rgba(255, 255, 255, 0.03) 100%
       );
-      transform-style: preserve-3d;
-      perspective: 1000px;
       
       @include mobile {
         padding: 20px 20px 20px 40px;
         margin-left: 30px;
+        // Remove or reduce these expensive properties
+        backdrop-filter: none; // Remove completely or use only on hover
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); // Reduced intensity
+        
+        // Simplify or remove gradient background
+        background-image: none;
+        background-color: rgba(255, 255, 255, 0.03);
+        
+        background-image: none; // Remove gradient on mobile
+        text-shadow: none; // Remove text shadows on mobile
       }
 
       .AcademicsDot {
@@ -210,28 +178,31 @@
         align-items: center;
         justify-content: center;
         transition: all 0.3s ease;
-
+        
+        &:hover {
+          transform: scale(1.2);
+        }
+  
         .innerDot {
           width: 10px;
           height: 10px;
           border-radius: 50%;
           background: white;
           box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
-          transition: all 0.3s ease;
         }
-
+  
         @include mobile {
           left: -30px;
           width: 20px;
           height: 20px;
-
+  
           .innerDot {
             width: 8px;
             height: 8px;
           }
         }
       }
-
+  
       .AcademicsContent {
         h2 {
           color: white;
@@ -240,26 +211,25 @@
           font-weight: 500;
           letter-spacing: 0.5px;
           text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-          transition: all 0.3s ease;
-
+  
           @include mobile {
             font-size: 20px;
+            text-shadow: none;
           }
         }
-
+  
         h3 {
           color: #b8b8d4;
           font-size: 20px;
           margin-bottom: 8px;
           font-weight: 400;
           letter-spacing: 0.3px;
-          transition: all 0.3s ease;
-
+  
           @include mobile {
             font-size: 18px;
           }
         }
-
+  
         .year {
           display: inline-block;
           background: linear-gradient(90deg, #ff7b00, #ffb700);
@@ -269,46 +239,40 @@
           font-size: 18px;
           margin-bottom: 15px;
           letter-spacing: 1px;
-          transition: all 0.3s ease;
           position: relative;
           padding-right: 5px;
-
+  
           &:after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
-            width: 0;
+            width: 100%;
             height: 2px;
             background: linear-gradient(90deg, #ff7b00, #ffb700);
-            transition: width 0.5s ease;
           }
-
+  
           @include mobile {
             font-size: 16px;
           }
         }
-
+  
         p {
           color: #b8b8d4;
           font-size: 16px;
           line-height: 1.7;
           letter-spacing: 0.3px;
           text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-          transition: all 0.3s ease;
-
+  
           @include mobile {
             font-size: 14px;
+            text-shadow: none; // Remove text shadow on mobile
           }
         }
       }
-
+  
       &:hover {
         .AcademicsContent {
-          .year:after {
-            width: 100%;
-          }
-          
           h2 {
             color: #ffb700;
             text-shadow: 0 0 15px rgba(255, 123, 0, 0.3);
@@ -320,5 +284,26 @@
         }
       }
     }
+  }
+}
+
+// Animation keyframes
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
