@@ -1,0 +1,254 @@
+@import "../../app.scss";
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f0f1e 0%, #1a1a35 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 123, 0, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    animation: pulse 8s ease-in-out infinite alternate;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.05);
+    }
+    100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+  }
+  
+  // Floating particles animation
+  .particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    
+    .particle {
+      position: absolute;
+      display: block;
+      pointer-events: none;
+      width: 6px;
+      height: 6px;
+      background: linear-gradient(90deg, #ff7b00, #ffb700);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255, 123, 0, 0.6);
+      animation: float 15s linear infinite;
+      opacity: 0;
+      
+      &:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; animation-duration: 25s; }
+      &:nth-child(2) { top: 80%; left: 80%; animation-delay: 1s; animation-duration: 35s; }
+      &:nth-child(3) { top: 40%; left: 60%; animation-delay: 2s; animation-duration: 45s; }
+      &:nth-child(4) { top: 10%; left: 70%; animation-delay: 3s; animation-duration: 20s; }
+      &:nth-child(5) { top: 30%; left: 20%; animation-delay: 4s; animation-duration: 18s; }
+      &:nth-child(6) { top: 70%; left: 40%; animation-delay: 5s; animation-duration: 30s; }
+      &:nth-child(7) { top: 50%; left: 10%; animation-delay: 6s; animation-duration: 22s; }
+      &:nth-child(8) { top: 60%; left: 80%; animation-delay: 7s; animation-duration: 28s; }
+      &:nth-child(9) { top: 90%; left: 30%; animation-delay: 8s; animation-duration: 32s; }
+      &:nth-child(10) { top: 20%; left: 90%; animation-delay: 9s; animation-duration: 26s; }
+      &:nth-child(11) { top: 30%; left: 50%; animation-delay: 10s; animation-duration: 24s; }
+      &:nth-child(12) { top: 80%; left: 20%; animation-delay: 11s; animation-duration: 29s; }
+      &:nth-child(13) { top: 40%; left: 30%; animation-delay: 12s; animation-duration: 27s; }
+      &:nth-child(14) { top: 60%; left: 60%; animation-delay: 13s; animation-duration: 33s; }
+      &:nth-child(15) { top: 10%; left: 50%; animation-delay: 14s; animation-duration: 31s; }
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(100px) scale(0.3);
+        opacity: 0;
+      }
+    }
+  }
+  
+  .loader-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(255, 123, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 40px;
+    box-shadow: 0 0 30px rgba(255, 123, 0, 0.2);
+    z-index: 2;
+    backdrop-filter: blur(5px);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 183, 0, 0.2);
+      animation: rotate 4s linear infinite;
+    }
+    
+    .circle-spinner {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: rgba(255, 123, 0, 0.8);
+      border-bottom-color: rgba(255, 183, 0, 0.8);
+      animation: spin 1.5s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .loader-logo {
+      font-size: 42px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ff7b00, #ffb700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      gap: 5px;
+      filter: drop-shadow(0 0 8px rgba(255, 123, 0, 0.5));
+      animation: pulse-text 2s ease-in-out infinite alternate;
+      
+      @keyframes pulse-text {
+        0% {
+          filter: drop-shadow(0 0 5px rgba(255, 123, 0, 0.3));
+        }
+        100% {
+          filter: drop-shadow(0 0 12px rgba(255, 123, 0, 0.7));
+        }
+      }
+    }
+  }
+  
+  .loader-dots {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+    z-index: 2;
+    
+    .loader-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(90deg, #ff7b00, #ffb700);
+      box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
+    }
+  }
+  
+  .loader-text {
+    font-size: 18px;
+    color: #b8b8d4;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    z-index: 2;
+    text-shadow: 0 0 10px rgba(184, 184, 212, 0.3);
+  }
+  
+  .progress-container {
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #ff7b00, #ffb700);
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
+    }
+    
+    .progress-text {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: #b8b8d4;
+      letter-spacing: 1px;
+    }
+  }
+  
+  @include mobile {
+    .loader-circle {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 30px;
+      
+      .loader-logo {
+        font-size: 36px;
+      }
+    }
+    
+    .loader-dots {
+      gap: 10px;
+      
+      .loader-dot {
+        width: 10px;
+        height: 10px;
+      }
+    }
+    
+    .loader-text {
+      font-size: 16px;
+    }
+    
+    .progress-container {
+      width: 180px;
+    }
+  }
+}

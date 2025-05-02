@@ -1,0 +1,117 @@
+@import "../../app.scss";
+
+.navbar {
+  height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  
+  &.docked {
+    background-color: rgba(12, 12, 29, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .wrapper {
+    max-width: 1366px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 20px;
+
+    @include mobile {
+      padding: 10px;
+    }
+
+    span {
+      font-weight: bold;
+      font-size: 24px;
+
+      @include mobile {
+        font-size: 18px;
+      }
+    }
+
+    .navigation {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+
+      @include tablet {
+        gap: 15px;
+      }
+
+      a {
+        font-size: 18px;
+        font-weight: 500;
+        color: lightgray;
+        text-decoration: none;
+        transition: color 0.3s;
+        position: relative;
+        padding: 5px 0;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #ff7b00, #ffb700);
+          border-radius: 3px;
+          transition: width 0.3s ease;
+          box-shadow: 0 0 8px rgba(255, 123, 0, 0.5);
+        }
+
+        @include mobile {
+          font-size: 16px;
+        }
+
+        &:hover {
+          color: white;
+          
+          &::after {
+            width: 100%;
+          }
+        }
+        
+        &.active {
+          color: white;
+          
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .social {
+      display: flex;
+      gap: 20px;
+
+      @include mobile {
+        gap: 10px;
+      }
+
+      img {
+        width: 18px;
+        height: 18px;
+
+        @include mobile {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}

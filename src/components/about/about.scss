@@ -1,0 +1,445 @@
+@import "../../app.scss";
+.about-section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f0f1e 0%, #1a1a35 100%);
+  padding: 6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  
+  @include tablet {
+    padding: 5rem 1.5rem;
+  }
+  
+  @include minitablet {
+    padding: 4rem 1rem 5rem;
+    min-height: auto;
+  }
+  
+  @include mobile {
+    padding: 3rem 0.75rem 4rem;
+    min-height: auto;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(255, 123, 0, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  
+  .floating-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: 
+        radial-gradient(circle at 85% 15%, rgba(255, 183, 0, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 15% 85%, rgba(255, 123, 0, 0.08) 0%, transparent 25%);
+      opacity: 0.8;
+      animation: float 15s infinite alternate ease-in-out;
+    }
+    
+    &::after {
+      background-image: 
+        radial-gradient(circle at 30% 25%, rgba(255, 183, 0, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 70% 75%, rgba(255, 123, 0, 0.05) 0%, transparent 20%);
+      animation-duration: 25s;
+      animation-delay: 2s;
+    }
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
+    100% { transform: translateY(5px) scale(0.95); }
+  }
+}
+
+.about-container {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  
+  @include tablet {
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem; // Increased from 2.5rem for better spacing
+  }
+  
+  @include minitablet {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 3rem; // Increased from 2.5rem for better spacing
+  }
+  
+  @include mobile {
+    gap: 2rem;
+    padding: 0.5rem;
+  }
+}
+
+.about-image {
+  flex: 2.2;
+  max-width: 850px;
+  
+  @include minitablet {
+    max-width: 30%;
+    width: 25%; // Reduced from 90% for better proportions
+    margin: 0 auto 1rem; // Added bottom margin
+  }
+  @include tablet {
+    max-width: 30%;
+    width: 85%; // Reduced from 90% for better proportions
+    margin: 0 auto 1rem; // Added bottom margin
+  }
+  
+  @include mobile {
+    width: 80%; // Changed from 95% to use full width
+    max-width: 100%; // Added to ensure full width
+  }
+  
+  .image-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 123, 0, 0.15);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    @include minitablet {
+      transform: perspective(800px) rotateY(-3deg);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 123, 0, 0.1);
+      border-radius: 20px; // Added border-radius adjustment
+    }
+    @include tablet {
+      transform: perspective(800px) rotateY(-3deg);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 123, 0, 0.1);
+      border-radius: 20px; // Added border-radius adjustment
+    }
+    
+    @include mobile {
+      transform: perspective(600px) rotateY(-2deg);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 0 15px rgba(255, 123, 0, 0.08);
+      border-radius: 16px;
+    }
+    
+    &:hover {
+      transform: perspective(1000px) rotateY(0deg) translateY(-15px); /* Increased movement */
+      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5), 0 0 50px rgba(255, 123, 0, 0.25);
+      
+      img {
+        transform: scale(1.08); /* Increased scale effect */
+      }
+      
+      .image-overlay {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 80%);
+        border-color: rgba(255, 183, 0, 0.6);
+      }
+      
+      .image-frame {
+        opacity: 1;
+        transform: scale(0.96);
+      }
+    }
+    
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+    
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 80%);
+      border: 3px solid rgba(255, 123, 0, 0.4); /* Increased border width */
+      border-radius: 24px;
+      transition: all 0.5s ease;
+      
+      @include mobile {
+        border-width: 2px; // Reduced border width for mobile
+        border-radius: 16px; // Match the wrapper border-radius
+      }
+    }
+    
+    .image-frame {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px solid rgba(255, 183, 0, 0.4);
+      border-radius: 18px;
+      opacity: 0.6;
+      transform: scale(1);
+      transition: all 0.5s ease;
+      pointer-events: none;
+      
+      @include mobile {
+        top: 8px; // Reduced spacing
+        left: 8px; // Reduced spacing
+        right: 8px; // Reduced spacing
+        bottom: 8px; // Reduced spacing
+        border-radius: 12px; // Smaller radius for mobile
+        opacity: 0.4; // Reduced opacity to make it less distracting
+      }
+    }
+  }
+}
+
+.about-content {
+  flex: 0.8;
+  padding-left: 1.5rem;
+  
+  @include minitablet {
+    padding-left: 0;
+    padding-top: 1rem; // Added top padding
+    width: 95%; // Changed from 100% to give some margin
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  @include tablet {
+    padding-left: 0;
+    padding-top: 1rem; // Added top padding
+    width: 95%; // Changed from 100% to give some margin
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  @include desktop {
+    padding-left: 1.2rem;
+    flex: 1;
+  }
+  @include mobile {
+    padding-left: 0;
+    padding-top: 1rem; // Added top padding
+    width: 95%; // Changed from 100% to give some margin
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, #ff7b00, #ffb700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    display: inline-block;
+    
+    @include minitablet {
+      font-size: 2rem;
+      text-align: center;
+    }
+    @include tablet {
+      font-size: 2rem;
+      text-align: center;
+    }
+    
+    @include mobile {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #ff7b00, #ffb700);
+      border-radius: 2px;
+      animation: pulse 2s infinite alternate;
+      
+      @include minitablet {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+    
+    @include minitablet {
+      font-size: 1.3rem;
+      margin: 1.5rem 0 0.8rem;
+      align-self: center;
+    }
+    @include tablet {
+      font-size: 1.3rem;
+      margin: 1.5rem 0 0.8rem;
+      align-self: center;
+    }
+    
+    @include mobile {
+      font-size: 1.2rem;
+      margin: 1.2rem 0 0.7rem;
+    }
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255, 123, 0, 0.6), transparent);
+      border-radius: 2px;
+      
+      @include minitablet {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+      }
+      @include tablet {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+      }
+    }
+  }
+  
+  .github-calendar-wrapper {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow-x: auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    
+    @include minitablet {
+      padding: 1.2rem; // Increased from 1rem
+      border-radius: 10px;
+      margin-top: 1rem; // Added top margin
+    }
+    @include tablet  {
+      padding: 1.2rem; // Increased from 1rem
+      border-radius: 10px;
+      margin-top: 1rem; // Added top margin
+    }
+    
+    @include mobile {
+      padding: 0.75rem;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+    }
+    
+    /* Make calendar responsive */
+    :global(.react-activity-calendar) {
+      width: 100%;
+      min-width: 100%;
+      overflow-x: auto;
+      
+      @include mobile {
+        font-size: 10px;
+      }
+    }
+  }
+  
+  .quote-container {
+    background: rgba(15, 15, 30, 0.6);
+    border-left: 4px solid rgba(255, 123, 0, 0.7);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    
+    @include minitablet {
+      padding: 1.2rem;
+      margin: 1.5rem 0;
+      border-radius: 6px;
+      width: 100%;
+    }
+    @include tablet  {
+      padding: 1.2rem;
+      margin: 1.5rem 0;
+      border-radius: 6px;
+      width: 100%;
+    }
+    
+    @include mobile {
+      padding: 1rem 0.8rem;
+      margin: 1.2rem 0;
+      font-size: 0.9rem;
+      border-width: 3px;
+    }
+    
+    .personal-quote {
+      p {
+        font-style: italic;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        
+        @include minitablet {
+          font-size: 1rem;
+        }
+        @include tablet   {
+          font-size: 1rem;
+        }
+        
+        @include mobile {
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+      }
+      
+      cite {
+        display: block;
+        text-align: right;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: rgba(255, 183, 0, 0.9);
+        
+        @include mobile {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+  

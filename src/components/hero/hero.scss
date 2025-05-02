@@ -1,0 +1,252 @@
+@import "../../app.scss";
+
+.hero {
+  height: calc(100vh - 100px);
+  overflow: hidden;
+  background: linear-gradient(180deg, #0c0c1d, #111132);
+  position: relative;
+  margin-top: 100px; /* Add this to account for fixed navbar */
+
+  @include tablet {
+    height: calc(100vh - 70px);
+    margin-top: 70px;
+  }
+  @include tablet {
+    height: calc(100vh - 70px);
+    margin-top: 70px;
+  }
+
+  .wrapper {
+    max-width: 1366px;
+    height: 100%;
+    margin: auto;
+    padding: 0 20px;
+
+    @include tablet {
+      padding: 0 30px;
+    }
+    @include tablet {
+      padding: 0 30px;
+    }
+
+    .textContainer {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 40px;
+
+      @include tablet {
+        width: 60%;
+        gap: 25px; /* Reduced from 30px for better spacing on tablets */
+      }
+      @include tablet {
+        width: 60%;
+        gap: 25px; /* Reduced from 30px for better spacing on tablets */
+      }
+
+      @include mobile {
+        height: 50%;
+        width: 100%;
+        gap: 15px;
+        align-items: center;
+        text-align: center;
+        padding: 70px 0 20px 0;
+        justify-content: flex-start;
+        position: relative;
+        z-index: 2;
+      }
+
+      h2 {
+        font-size: clamp(20px, 3vw, 30px);
+        color: rebeccapurple;
+        letter-spacing: clamp(5px, 1vw, 10px);
+        
+        @include tablet {
+          font-size: clamp(18px, 2.5vw, 24px);
+          letter-spacing: 5px;
+        }
+        @include tablet {
+          font-size: clamp(18px, 2.5vw, 24px);
+          letter-spacing: 5px;
+        }
+        
+        @include mobile {
+          font-size: clamp(16px, 2vw, 20px);
+          letter-spacing: 4px;
+        }
+      }
+
+      h1 {
+        font-size: clamp(36px, 8vw, 88px);
+        line-height: 1.1;
+        white-space: normal;
+        
+        @include tablet {
+          font-size: clamp(32px, 6vw, 64px);
+          line-height: 1.2;
+        }
+        @include tablet {
+          font-size: clamp(32px, 6vw, 64px);
+          line-height: 1.2;
+        }
+        
+        @include mobile {
+          font-size: clamp(28px, 5vw, 48px);
+          line-height: 1.3;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        gap: 20px;
+
+        @include tablet {
+          gap: 15px;
+        }
+        @include tablet {
+          gap: 15px;
+        }
+
+        @include mobile {
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+        }
+
+        button {
+          padding: clamp(10px, 2vw, 20px);
+          border: 1px solid white;
+          border-radius: 10px;
+          background-color: transparent;
+          color: white;
+          cursor: pointer;
+          font-weight: 300;
+          white-space: nowrap;
+
+          @include tablet {
+            font-size: 14px;
+            padding: 12px 16px;
+          }
+          @include tablet {
+            font-size: 14px;
+            padding: 12px 16px;
+          }
+
+          @include mobile {
+            width: 100%;
+            max-width: 200px;
+            margin: 0;
+            font-size: 13px;
+            padding: 10px 14px;
+          }
+        }
+      }
+
+      img {
+        width: clamp(30px, 5vw, 50px);
+        
+        @include tablet {
+          width: clamp(25px, 4vw, 40px);
+        }
+        @include tablet {
+          width: clamp(25px, 4vw, 40px);
+        }
+        
+        @include mobile {
+          width: clamp(20px, 3vw, 30px);
+        }
+      }
+    }
+  }
+
+  .imageContainer {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+
+    @include tablet {
+      width: 50%; /* Increased from 45% to 50% for larger container */
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      bottom: 0;
+      top: auto;
+    }
+    @include tablet {
+      width: 50%; /* Increased from 45% to 50% for larger container */
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      bottom: 0;
+      top: auto;
+    }
+
+    @include mobile {
+      height: 53%;
+      width: 100%;
+      top: unset;
+      bottom: 0;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      @include tablet {
+        object-position: bottom right;
+        object-fit: contain;
+        max-height: 100%;
+        max-width: 100%; /* Increased from 90% to 100% for larger image */
+      }
+      @include tablet {
+        object-position: bottom right;
+        object-fit: contain;
+        max-height: 100%;
+        max-width: 100%; /* Increased from 90% to 100% for larger image */
+      }
+
+      @include mobile {
+        object-position: top;
+        object-fit: contain;
+        max-height: 100%;
+      }
+    }
+  }
+
+  .slidingTextContainer {
+    position: absolute;
+    font-size: 50vh;
+    bottom: -120px;
+    white-space: nowrap;
+    color: #ffffff09;
+    width: 50%;
+    font-weight: bold;
+
+    @include tablet {
+      font-size: 38vh;
+      bottom: -90px;
+      width: 60%;
+    }
+    @include tablet {
+      font-size: 38vh;
+      bottom: -90px;
+      width: 60%;
+    }
+
+    @include mobile {
+      font-size: 28vh;
+      bottom: -60px;
+      width: 100%;
+    }
+  }
+}

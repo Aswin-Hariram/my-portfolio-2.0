@@ -1,0 +1,129 @@
+@import "../../app.scss";
+
+.skills {
+  background: linear-gradient(180deg, #111132, #0c0c1d);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px 0;
+
+
+  .titleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+ 
+
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+
+      @include mobile {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+      @include minitablet {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+      }
+
+      @include tablet {
+        gap: 40px;
+      }
+
+      h1 {
+        font-size: 96px;
+        font-weight: 100;
+
+        @include mobile {
+          font-size: 36px;
+        }
+        @include minitablet {
+          font-size: 48px;
+        }
+
+        @include tablet {
+          font-size: 72px;
+        }
+      }
+    }
+  }
+
+  .skillsContainer {
+    display: flex;
+    flex-wrap: wrap;  /* Allows items to wrap into multiple rows */
+    gap: 30px;
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0 20px;
+    margin-top: 50px;
+    .categoryCard {
+      background-color: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      flex-basis: 48%; /* Two-column layout with 48% width for each card */
+      
+      @include mobile {
+        padding: 20px;
+        flex-basis: 100%;  /* Full width on mobile */
+      }
+      @include minitablet {
+        padding: 20px;
+        flex-basis: 100%;
+      }
+
+      h2 {
+        color: white;
+        font-size: 28px;
+        margin-bottom: 20px;
+        font-weight: 300;
+        position: relative;
+        display: inline-block;
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          width: 50px;
+          height: 3px;
+          background-color: orange;
+        }
+
+        @include mobile {
+          font-size: 22px;
+        }
+      }
+
+      .skillTags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+
+        .skillTag {
+          background-color: rgba(255, 255, 255, 0.08);
+          color: lightgray;
+          padding: 8px 16px;
+          border-radius: 20px;
+          font-size: 16px;
+          transition: all 0.3s ease;
+          cursor: default;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+
+          @include mobile {
+            font-size: 14px;
+            padding: 6px 12px;
+          }
+        }
+      }
+    }
+  }
+}
