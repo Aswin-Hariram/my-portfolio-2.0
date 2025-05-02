@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import "./Academics.scss";
+import "./academics.scss"; // Updated import path to match the actual file name
 import { motion, useInView, AnimatePresence } from "framer-motion";
 
 const variants = {
