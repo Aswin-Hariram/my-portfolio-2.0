@@ -12,7 +12,7 @@ import Loader from "./components/loader/Loader";
 import Chatbot from "./components/chatbot/Chatbot";
 import Sidebar from "./components/sidebar/Sidebar";
 import Portfolio from "./components/portfolio/Portfolio";
-import Academics from "./components/academics/Academics"; // Add this import
+import Academics from "./components/academics/academics"; // Updated import path
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
