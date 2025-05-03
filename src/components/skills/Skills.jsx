@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import "./skills.scss";
 import { motion, useInView } from "framer-motion";
 
@@ -92,6 +92,30 @@ const skillsData = [
 const Skills = () => {
     const ref = useRef();
     const isInView = useInView(ref, { margin: "-100px", once: true });
+    const [hasAnimated, setHasAnimated] = useState(false);
+    const [scrollDirection, setScrollDirection] = useState("down");
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY) {
+                setScrollDirection("down");
+            } else {
+                setScrollDirection("up");
+            }
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [lastScrollY]);
+
+    useEffect(() => {
+        if (isInView && scrollDirection === "down" && !hasAnimated) {
+            setHasAnimated(true);
+        }
+    }, [isInView, scrollDirection, hasAnimated]);
 
     return (
         <motion.div
@@ -99,7 +123,7 @@ const Skills = () => {
             variants={containerVariants}
             initial="initial"
             ref={ref}
-            animate={isInView ? "animate" : "initial"}
+            animate={isInView && scrollDirection === "down" && !hasAnimated ? "animate" : hasAnimated ? "animate" : "initial"}
         >
             <motion.div className="skillsContainer" variants={containerVariants}>
                 {skillsData.map((category, index) => (

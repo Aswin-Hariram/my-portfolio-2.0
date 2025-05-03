@@ -73,6 +73,7 @@
       @include mobile {
         padding: 20px;
         flex-basis: 100%;  /* Full width on mobile */
+        will-change: opacity, transform; // Hint to browser about properties that will animate
       }
       @include minitablet {
         padding: 20px;
