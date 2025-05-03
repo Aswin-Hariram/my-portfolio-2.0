@@ -1,93 +1,65 @@
-import { useRef, useState, useEffect, useMemo } from "react";
+import { useRef, useState, useEffect } from "react";
 import "./services.scss";
 import { motion, useInView } from "framer-motion";
 
-// Create responsive variants based on screen size - with further reduced values
-const getVariants = (isMobile, isTablet) => ({
-  initial: {
-    opacity: 0, // Only animate opacity initially for better performance
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      duration: isMobile ? 0.2 : 0.3, // Even shorter duration
-      staggerChildren: isMobile ? 0.03 : 0.08, // Reduced stagger time
-      ease: "easeOut"
-    },
-  },
-});
-
-// Simplified child variants - separate transforms from opacity
-const getChildVariants = (isMobile, isTablet) => ({
+// Create responsive variants based on screen size 
+const getVariants = (isMobile, isTablet) => ({ 
   initial: { 
-    y: isMobile ? 10 : 20, 
-    opacity: 0 
-  },
+    x: isMobile ? -100 : isTablet ? -300 : -500, 
+    y: isMobile ? 50 : 100, 
+    opacity: 0, 
+  }, 
   animate: { 
+    x: 0, 
+    opacity: 1, 
     y: 0, 
-    opacity: 1,
     transition: { 
-      type: "tween", // Using tween instead of spring for more predictable performance
-      duration: 0.3,
-      ease: "easeOut" 
-    } 
-  }
-});
+      duration: isMobile ? 0.7 : 1, 
+      staggerChildren: isMobile ? 0.08 : 0.1, 
+    }, 
+  }, 
+}); 
 
-// Box hover variants with touch-friendly alternatives - simplified
-const getBoxVariants = (isMobile, isTablet) => ({
-  initial: { opacity: 0 },
+// Box hover variants with touch-friendly alternatives 
+const getBoxVariants = (isMobile, isTablet) => ({ 
+  initial: { opacity: 0, scale: 0.9 }, 
   animate: { 
-    opacity: 1,
-    transition: { 
-      duration: 0.2,
-      ease: "easeOut"
-    } 
-  },
-  hover: {
-    backgroundColor: "rgba(211, 211, 211, 0.9)",
-    color: "black",
-    transition: { 
-      duration: 0.2
-    }
-  }
-});
+    opacity: 1, 
+    scale: 1, 
+    transition: { duration: 0.3 } 
+  }, 
+  hover: isMobile || isTablet ? { 
+    scale: 1.03, 
+    backgroundColor: "rgba(211, 211, 211, 0.9)", 
+    color: "black", 
+    transition: { duration: 0.3 } 
+  } : { 
+    backgroundColor: "lightgray", 
+    color: "black" 
+  } 
+}); 
 
-const Services = () => {
-  const ref = useRef();
-  const isInView = useInView(ref, { margin: "-100px", amount: 0.1 }); // Added amount for more precise triggering
-  const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
+const Services = () => { 
+  const ref = useRef(); 
+  const isInView = useInView(ref, { margin: "-100px" }); 
+  const [isMobile, setIsMobile] = useState(false); 
+  const [isTablet, setIsTablet] = useState(false); 
 
-  // Debounced resize handler for better performance
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 738);
-      setIsTablet(window.innerWidth > 738 && window.innerWidth <= 1024);
-    };
+  // Check screen size on mount and resize 
+  useEffect(() => { 
+    const checkScreenSize = () => { 
+      setIsMobile(window.innerWidth <= 738); 
+      setIsTablet(window.innerWidth > 738 && window.innerWidth <= 1024); 
+    }; 
     
-    // Initial check
-    checkScreenSize();
+    checkScreenSize(); 
+    window.addEventListener("resize", checkScreenSize); 
     
-    // Debounced resize handler
-    let timeoutId;
-    const handleResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(checkScreenSize, 150); // 150ms debounce
-    };
-    
-    window.addEventListener("resize", handleResize);
-    
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(timeoutId);
-    };
-  }, []);
+    return () => window.removeEventListener("resize", checkScreenSize); 
+  }, []); 
 
-  // Use useMemo for variants to prevent recalculation
-  const variants = useMemo(() => getVariants(isMobile, isTablet), [isMobile, isTablet]);
-  const childVariants = useMemo(() => getChildVariants(isMobile, isTablet), [isMobile, isTablet]);
-  const boxVariants = useMemo(() => getBoxVariants(isMobile, isTablet), [isMobile, isTablet]);
+  const variants = getVariants(isMobile, isTablet); 
+  const boxVariants = getBoxVariants(isMobile, isTablet); 
   
   // Function to navigate to portfolio section with filter
   const navigateToPortfolio = (serviceType) => {
@@ -119,94 +91,72 @@ const Services = () => {
       }, 500); // Small delay to ensure the section is scrolled to first
     }
   };
-  
-  // Pre-generate service items to avoid recreation on each render
-  const serviceItems = useMemo(() => [
-    {
-      title: "Custom Web Development",
-      description: "We specialize in building high-performance websites tailored to your business needs, ensuring seamless user experiences."
-    },
-    {
-      title: "Mobile App Development",
-      description: "Create apps that make a real impact. Whether Android or iOS, we develop apps that enhance user engagement and drive business growth."
-    },
-    {
-      title: "AI Solutions",
-      description: "Harness the power of AI for automation, predictive analysis, and personalized experiences that take your business to the next level."
-    },
-    {
-      title: "Cloud & Backend Solutions",
-      description: "Build scalable and secure cloud infrastructure. We provide robust backend solutions that are both reliable and scalable."
-    }
-  ], []);
 
-  return (
-    <motion.div
-      className="services"
-      variants={variants}
-      initial="initial"
-      ref={ref}
-      animate={isInView ? "animate" : "initial"}
-      style={{ willChange: "opacity" }} // More specific willChange
-      layout="position"
-    >
-      <motion.div 
-        className="textContainer" 
-        variants={childVariants}
-        style={{ willChange: "transform, opacity" }}
-      >
-        <p>
-          As a developer, my mission is to elevate your brand
-          <br /> through cutting-edge technologies and tailored solutions.
-        </p>
-        <hr />
-      </motion.div>
+  return ( 
+    <motion.div 
+      className="services" 
+      variants={variants} 
+      initial="initial" 
+      ref={ref} 
+      animate={isInView ? "animate" : "initial"} 
+    > 
+      <motion.div className="textContainer" variants={variants}> 
+        <p> 
+          As a developer, my mission is to elevate your brand 
+          <br /> through cutting-edge technologies and tailored solutions. 
+        </p> 
+        <hr /> 
+      </motion.div> 
 
-      <motion.div 
-        className="titleContainer" 
-        variants={childVariants}
-        style={{ willChange: "transform, opacity" }}
-      >
-        <div className="title">
-          <img 
-            src="/people.webp" 
-            alt="People" 
-            loading="eager" // Prioritize image loading
-          />
-          <h1>
-            <motion.b whileHover={{ color: "orange" }}>Innovative</motion.b> Ideas
-          </h1>
-        </div>
-        <div className="title">
-          <h1>
-            <motion.b whileHover={{ color: "orange" }}>For Your</motion.b> Success.
-          </h1>
-          <button onClick={() => navigateToPortfolio("All")}>Explore Our Services</button>
-        </div>
-      </motion.div>
+      <motion.div className="titleContainer" variants={variants}> 
+        <div className="title"> 
+          <img src="/people.webp" alt="People" /> 
+          <h1> 
+            <motion.b whileHover={{ color: "orange" }}>Innovative</motion.b> Ideas 
+          </h1> 
+        </div> 
+        <div className="title"> 
+          <h1> 
+            <motion.b whileHover={{ color: "orange" }}>For Your</motion.b> Success. 
+          </h1> 
+          <button onClick={() => navigateToPortfolio("All")}>Explore Our Services</button> 
+        </div> 
+      </motion.div> 
 
-      <motion.div 
-        className="listContainer" 
-        variants={childVariants}
-        style={{ willChange: "transform, opacity" }}
-      >
-        {serviceItems.map((service, index) => (
-          <motion.div
-            key={index}
-            className="box"
-            variants={boxVariants}
-            whileHover="hover"
-            whileTap={isMobile || isTablet ? "hover" : undefined}
-            style={{ willChange: "background-color, color" }}
-          >
-            <h2>{service.title}</h2>
-            <p>{service.description}</p>
-            <button onClick={() => navigateToPortfolio(service.title)}>Learn More</button>
-          </motion.div>
-        ))}
-      </motion.div>
-    </motion.div>
-  );
-};
+      <motion.div className="listContainer" variants={variants}> 
+        {[ 
+          { 
+            title: "Custom Web Development", 
+            description: "We specialize in building high-performance websites tailored to your business needs, ensuring seamless user experiences." 
+          }, 
+          { 
+            title: "Mobile App Development", 
+            description: "Create apps that make a real impact. Whether Android or iOS, we develop apps that enhance user engagement and drive business growth." 
+          }, 
+          { 
+            title: "AI Solutions", 
+            description: "Harness the power of AI for automation, predictive analysis, and personalized experiences that take your business to the next level." 
+          }, 
+          { 
+            title: "Cloud & Backend Solutions", 
+            description: "Build scalable and secure cloud infrastructure. We provide robust backend solutions that are both reliable and scalable." 
+          } 
+        ].map((service, index) => ( 
+          <motion.div 
+            key={index} 
+            className="box" 
+            variants={boxVariants} 
+            whileHover="hover" 
+            whileTap={isMobile || isTablet ? "hover" : undefined} 
+          > 
+            <h2>{service.title}</h2> 
+            <p>{service.description}</p> 
+            <button onClick={() => navigateToPortfolio(service.title)}>Learn More</button> 
+          </motion.div> 
+        ))} 
+      </motion.div> 
+    </motion.div> 
+  ); 
+}; 
 
 export default Services;
