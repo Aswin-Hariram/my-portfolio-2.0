@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from 'remark-gfm';
 import "./chatbot.scss";
 
 const Chatbot = () => {
@@ -7,7 +9,9 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [isInputFocused, setIsInputFocused] = useState(false); // New state to track input focus
   const messagesEndRef = useRef(null);
+  const chatWindowRef = useRef(null); // Reference to the chat window
 
   // API integration for bot responses
   const getBotResponse = async (inputText) => {
@@ -31,15 +35,18 @@ const Chatbot = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
-
+  
     // Add user message
     const userMessage = { text: inputValue, sender: "user" };
     setMessages([...messages, userMessage]);
     setInputValue("");
-
+  
     // Show typing indicator
     setIsTyping(true);
-
+  
+    // Store reference to the input element
+    const inputElement = e.target.querySelector('input');
+  
     try {
       // Get response from API
       const botResponse = await getBotResponse(userMessage.text);
@@ -48,6 +55,11 @@ const Chatbot = () => {
       setIsTyping(false);
       const botMessage = { text: botResponse, sender: "bot" };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
+      
+      // Refocus the input field after state updates
+      setTimeout(() => {
+        inputElement?.focus();
+      }, 0);
     } catch (error) {
       // Handle error
       setIsTyping(false);
@@ -56,6 +68,11 @@ const Chatbot = () => {
         sender: "bot" 
       };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
+      
+      // Refocus the input field after state updates
+      setTimeout(() => {
+        inputElement?.focus();
+      }, 0);
     }
   };
 
@@ -76,10 +93,13 @@ const Chatbot = () => {
     // Add user message
     const userMessage = { text: query, sender: "user" };
     setMessages([...messages, userMessage]);
-
+  
     // Show typing indicator
     setIsTyping(true);
-
+    
+    // Find the input element to focus on later
+    const inputElement = document.querySelector('.chat-input input');
+  
     try {
       // Get response from API
       const botResponse = await getBotResponse(query);
@@ -88,6 +108,11 @@ const Chatbot = () => {
       setIsTyping(false);
       const botMessage = { text: botResponse, sender: "bot" };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
+      
+      // Refocus the input field after state updates
+      setTimeout(() => {
+        inputElement?.focus();
+      }, 0);
     } catch (error) {
       // Handle error
       setIsTyping(false);
@@ -96,8 +121,43 @@ const Chatbot = () => {
         sender: "bot" 
       };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
+      
+      // Refocus the input field after state updates
+      setTimeout(() => {
+        inputElement?.focus();
+      }, 0);
     }
   };
+
+  // Add this effect to handle keyboard appearance on mobile
+  useEffect(() => {
+    if (isInputFocused && chatWindowRef.current) {
+      // When input is focused, adjust the position of the chat window
+      const adjustChatPosition = () => {
+        // On mobile, move the chat window up to make room for the keyboard
+        if (window.innerWidth <= 768) { // Mobile breakpoint
+          chatWindowRef.current.style.bottom = '120px'; // Adjust this value based on your keyboard height
+          chatWindowRef.current.style.maxHeight = 'calc(100vh - 180px)'; // Adjust max height
+          
+          // Scroll to the bottom after position adjustment
+          setTimeout(() => {
+            messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+          }, 100);
+        }
+      };
+      
+      adjustChatPosition();
+      window.addEventListener('resize', adjustChatPosition);
+      
+      return () => {
+        window.removeEventListener('resize', adjustChatPosition);
+      };
+    } else if (chatWindowRef.current) {
+      // Reset position when input loses focus
+      chatWindowRef.current.style.bottom = '60px'; // Original position
+      chatWindowRef.current.style.maxHeight = ''; // Reset max height
+    }
+  }, [isInputFocused]);
 
   return (
     <div className="chatbot-container">
@@ -149,6 +209,7 @@ const Chatbot = () => {
         {isOpen && (
           <motion.div
             className="chat-window"
+            ref={chatWindowRef} // Add the ref here
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -233,7 +294,13 @@ const Chatbot = () => {
                           <img src="/hero.png" alt="Aswin" />
                         </div>
                       )}
-                      <div className="message-content">{msg.text}</div>
+                      <div className="message-content">
+                        {msg.sender === "bot" ? (
+                          <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
+                        ) : (
+                          msg.text
+                        )}
+                      </div>
                       <div className="message-time">
                         {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </div>
@@ -268,6 +335,8 @@ const Chatbot = () => {
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Type your message..."
                 disabled={isTyping}
+                onFocus={() => setIsInputFocused(true)}
+                onBlur={() => setIsInputFocused(false)}
               />
               <motion.button 
                 type="submit"
