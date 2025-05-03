@@ -49,7 +49,7 @@ const Hero = () => {
 
   const handleDownloadResume = () => {
     // Open Google Drive link in a new tab
-    window.open('https://drive.google.com/file/d/15oiB_aswF5fdKCB2Db7Yu6pJE54bBHXM/view?usp=sharing', '_blank');
+    window.open(import.meta.env.VITE_RESUME_URL, '_blank');
   };
 
   return (
