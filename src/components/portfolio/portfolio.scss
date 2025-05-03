@@ -291,21 +291,32 @@
           display: flex;
           flex-wrap: wrap;
           gap: 8px;
-
+          margin-top: 10px;
+          
           .tag {
             padding: 5px 12px;
-            background: rgba(255, 123, 0, 0.1);
-            border: 1px solid rgba(255, 123, 0, 0.3);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            font-size: 14px;
-            color: #ff9d4d;
+            color: #b8b8d4;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
             
             @include mobile {
-              /* Remove backdrop-filter on mobile */
-              backdrop-filter: none;
-              -webkit-backdrop-filter: none;
-              font-size: 12px;
+              font-size: 11px;
               padding: 4px 10px;
+              backdrop-filter: none;
+            }
+            
+            &:hover {
+              background: rgba(255, 123, 0, 0.1);
+              border-color: rgba(255, 123, 0, 0.3);
+              color: #ff9d4d;
             }
           }
         }
@@ -438,18 +449,11 @@
       opacity: 1;
     }
     
-    .tag {
-      animation: tagPulse 1s ease infinite alternate;
-    }
+    // Removed .tag animation
   }
 }
 
-// Tag animations
-.tag {
-  opacity: 0;
-  animation: fadeInRight 0.5s ease forwards;
-  transform-origin: left center;
-}
+// Removed Tag animations section
 
 // Button animation
 .viewButton {
@@ -633,11 +637,7 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
     
-    /* Remove backdrop-filter on mobile as it's performance-heavy */
-    .tag {
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-    }
+    /* Removed tag-related mobile styles */
   }
 }
 

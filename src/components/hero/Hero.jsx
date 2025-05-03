@@ -39,6 +39,19 @@ const sliderVariants = {
 };
 
 const Hero = () => {
+  const handleNavigateToPortfolio = () => {
+    // Get the portfolio section element
+    const portfolioSection = document.getElementById("Portfolio");
+    if (portfolioSection) {
+      portfolioSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleDownloadResume = () => {
+    // Open Google Drive link in a new tab
+    window.open('https://drive.google.com/file/d/15oiB_aswF5fdKCB2Db7Yu6pJE54bBHXM/view?usp=sharing', '_blank');
+  };
+
   return (
     <div className="hero">
       <div className="wrapper">
@@ -54,8 +67,18 @@ const Hero = () => {
             And UI&nbsp;Designer
           </motion.h1>
           <motion.div variants={textVariants} className="buttons">
-            <motion.button variants={textVariants}>See the Latest Works</motion.button>
-            <motion.button variants={textVariants}>Contact Me</motion.button>
+            <motion.button 
+              variants={textVariants} 
+              onClick={handleNavigateToPortfolio}
+            >
+              See the Latest Works
+            </motion.button>
+            <motion.button 
+              variants={textVariants} 
+              onClick={handleDownloadResume}
+            >
+              Download Resume
+            </motion.button>
           </motion.div>
           <motion.img
             variants={textVariants}

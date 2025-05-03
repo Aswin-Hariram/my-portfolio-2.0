@@ -68,6 +68,8 @@ const Parallax = ({ type }) => {
           ? "What I Know?" 
           : type === "Academics"
           ? "My Academics"
+          : type === "about"
+          ? "Who Am I?"
           : "What I Did?"}
       </motion.h1>
       <motion.div className="mountains"></motion.div>

@@ -157,6 +157,7 @@ const ProjectCard = ({ project, index, isMobile, isTablet, cardVariants }) => {
   
   return (
     <motion.div 
+  
       className={`projectCard ${isVisible ? 'visible' : ''} ${imageLoaded ? 'image-loaded' : 'image-loading'}`}
       ref={cardRef}
       variants={cardVariants}
@@ -169,7 +170,7 @@ const ProjectCard = ({ project, index, isMobile, isTablet, cardVariants }) => {
       layoutId={isMobile ? undefined : `project-${index}`} // Only use layoutId on desktop
       style={{ animationDelay: isMobile ? `${index * 0.05}s` : `${index * 0.1}s` }} // Faster delay on mobile
     >
-      <div className="imageContainer">
+      <div  className="imageContainer">
         <img 
           src={project.image} 
           alt={project.title} 
@@ -224,20 +225,34 @@ const ProjectCard = ({ project, index, isMobile, isTablet, cardVariants }) => {
         >
           {project.description}
         </motion.p>
-        <div className="tags">
+        <motion.div 
+          className="tags"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.4 }}
+        >
           {project.tags.map((tag, tagIndex) => (
             <motion.span 
-              key={`tag-${tagIndex}`} 
+              key={tagIndex} 
               className="tag"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 + (tagIndex * 0.05), duration: 0.3 }}
-              whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 123, 0, 0.2)" }}
+              transition={{ 
+                delay: 0.3 + (tagIndex * 0.05), 
+                duration: 0.3,
+                type: isMobile ? "tween" : "spring",
+                stiffness: isMobile ? 100 : 200
+              }}
+              whileHover={{ 
+                scale: 1.05,
+                backgroundColor: "rgba(255, 123, 0, 0.2)",
+                color: "#ff9d4d"
+              }}
             >
               {tag}
             </motion.span>
           ))}
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );
@@ -444,6 +459,7 @@ const Portfolio = () => {
 
   return (
     <motion.div 
+ 
       className="portfolio" 
       ref={ref}
       initial="initial"
@@ -585,10 +601,7 @@ const Portfolio = () => {
                   <p>{project.description}</p>
                   <div className="tags">
                     {project.tags.map((tag, tagIndex) => (
-                      <span 
-                        key={`tag-${tagIndex}`} 
-                        className="tag"
-                      >
+                      <span key={tagIndex} className="tag">
                         {tag}
                       </span>
                     ))}

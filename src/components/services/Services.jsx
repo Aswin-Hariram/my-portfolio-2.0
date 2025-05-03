@@ -89,6 +89,37 @@ const Services = () => {
   const childVariants = useMemo(() => getChildVariants(isMobile, isTablet), [isMobile, isTablet]);
   const boxVariants = useMemo(() => getBoxVariants(isMobile, isTablet), [isMobile, isTablet]);
   
+  // Function to navigate to portfolio section with filter
+  const navigateToPortfolio = (serviceType) => {
+    // Map service types to portfolio filters
+    const filterMap = {
+      "Custom Web Development": "Web",
+      "Mobile App Development": "Mobile",
+      "AI Solutions": "AI",
+      "Cloud & Backend Solutions": "Web"
+    };
+    
+    // Get the filter value based on service type
+    const filter = filterMap[serviceType] || "All";
+    
+    // Find the portfolio section
+    const portfolioSection = document.getElementById("Portfolio");
+    if (portfolioSection) {
+      // Scroll to the portfolio section
+      portfolioSection.scrollIntoView({ behavior: "smooth" });
+      
+      // Find and click the corresponding filter button
+      setTimeout(() => {
+        const filterButtons = document.querySelectorAll(".filterButton");
+        filterButtons.forEach(button => {
+          if (button.textContent === filter) {
+            button.click();
+          }
+        });
+      }, 500); // Small delay to ensure the section is scrolled to first
+    }
+  };
+  
   // Pre-generate service items to avoid recreation on each render
   const serviceItems = useMemo(() => [
     {
@@ -150,7 +181,7 @@ const Services = () => {
           <h1>
             <motion.b whileHover={{ color: "orange" }}>For Your</motion.b> Success.
           </h1>
-          <button>Explore Our Services</button>
+          <button onClick={() => navigateToPortfolio("All")}>Explore Our Services</button>
         </div>
       </motion.div>
 
@@ -170,7 +201,7 @@ const Services = () => {
           >
             <h2>{service.title}</h2>
             <p>{service.description}</p>
-            <button>Learn More</button>
+            <button onClick={() => navigateToPortfolio(service.title)}>Learn More</button>
           </motion.div>
         ))}
       </motion.div>
