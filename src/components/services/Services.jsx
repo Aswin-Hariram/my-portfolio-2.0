@@ -100,7 +100,7 @@ const Services = () => {
     };
     
     // Get the filter value based on service type
-    const filter = filterMap[serviceType] || "All";
+    const filter =  "All";
     
     // Find the portfolio section
     const portfolioSection = document.getElementById("Portfolio");

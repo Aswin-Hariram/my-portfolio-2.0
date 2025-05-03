@@ -1,6 +1,35 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
-const ContactForm = ({ formRef, sendEmail, error, success }) => {
+const ContactForm = () => {
+  const formRef = useRef();
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_17tizeb", // Updated service ID
+        "template_v10u2oh",
+        formRef.current,
+        "pX_2hasGmGcuvjXIW"
+      )
+      .then(
+        (result) => {
+          setSuccess(true);
+          formRef.current.reset();
+          setTimeout(() => setSuccess(false), 3000);
+        },
+        (error) => {
+          setError(true);
+          setTimeout(() => setError(false), 3000);
+        }
+      );
+  };
+
   return (
     <motion.form
       ref={formRef}

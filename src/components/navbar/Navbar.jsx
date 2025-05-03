@@ -49,15 +49,30 @@ const Navbar = () => {
   return (
     <div className={`navbar ${!isHeroSection ? 'docked' : ''} ${isMobileOrTablet ? 'hidden' : ''}`}>
       <div className="wrapper">
-        <motion.span
+        <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+          className="logo-container"
         >
-          Aswin
-        </motion.span>
+          <svg 
+            width="40" 
+            height="24" 
+            viewBox="0 0 40 24" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g>
+              <text x="0" y="20" fontFamily="Arial" fontSize="20" fontWeight="bold" fill="currentColor">
+                A
+              </text>
+              <text x="20" y="20" fontFamily="Arial" fontSize="20" fontWeight="bold" fill="currentColor">
+                H
+              </text>
+            </g>
+          </svg>
+        </motion.div>
         
         <div className="navigation">
           {items.map((item) => (
