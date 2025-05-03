@@ -226,7 +226,7 @@
 
   .slidingTextContainer {
     position: absolute;
-    font-size: 50vh;
+    font-size: 50dvh;
     bottom: -120px;
     white-space: nowrap;
     color: #ffffff09;
@@ -234,18 +234,18 @@
     font-weight: bold;
 
     @include tablet {
-      font-size: 38vh;
+      font-size: 38dvh;
       bottom: -90px;
       width: 60%;
     }
     @include tablet {
-      font-size: 38vh;
+      font-size: 38dvh;
       bottom: -90px;
       width: 60%;
     }
 
     @include mobile {
-      font-size: 28vh;
+      font-size: 28dvh;
       bottom: -60px;
       width: 100%;
     }

@@ -10,13 +10,13 @@
   overflow: hidden;
 
   @include mobile {
-    min-height: 100vh;
+    min-height: 100dvh;
   }
   @include tablet {
-    min-height: 100vh;
+    min-height: 100dvh;
   }
   @include minitablet {
-    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   h1 {

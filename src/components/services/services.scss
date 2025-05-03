@@ -3,7 +3,7 @@
   background: linear-gradient(180deg, #0c0c1d, #111132);
   /* Remove fixed height constraints completely */
   height: auto;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Changed from space-between to allow natural content flow */

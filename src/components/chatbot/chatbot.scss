@@ -100,7 +100,7 @@
     bottom: 75px;
     right: 0;
     width: 25vw;
-    height: 80vh;
+    height: 80dvh;
     background-color: #111827; /* Dark slate gray */
     border-radius: 16px;
     overflow: hidden;
@@ -114,7 +114,7 @@
     /* Small mobile screens (320px - 374px) */
     // @media (min-width: 320px) and (max-width: 374px) {
     //   width: 280px;
-    //   height: 70vh; /* Reduced height for smallest screens */
+    //   height: 70dvh; /* Reduced height for smallest screens */
     //   max-height: 450px;
     //   bottom: 60px;
     //   right: 0;
@@ -124,7 +124,7 @@
     /* Regular mobile screens */
     @include mobile {
       width: 300px;
-      height: 80vh; /* Reduced height for mobile */
+      height: 80dvh; /* Reduced height for mobile */
       max-height: 550px;
       bottom: 60px;
       right: 0;
@@ -958,12 +958,12 @@
   @media (min-width: 320px) and (max-width: 374px) {
     padding: 10px;
     gap: 8px;
-    max-height: 65vh;
+    max-height: 65dvh;
   }
   
   @include mobile {
     padding: 15px;
     gap: 10px;
-    max-height: 70vh;
+    max-height: 70dvh;
   }
 }

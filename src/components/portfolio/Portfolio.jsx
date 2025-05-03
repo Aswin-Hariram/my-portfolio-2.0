@@ -239,14 +239,17 @@ const ProjectCard = ({ project, index, isMobile, isTablet, cardVariants }) => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ 
                 delay: 0.3 + (tagIndex * 0.05), 
-                duration: 0.3,
+                duration: isMobile ? 0.4 : 0.3, // Increased from 0.3 to 0.4 for mobile
                 type: isMobile ? "tween" : "spring",
-                stiffness: isMobile ? 100 : 200
+                stiffness: isMobile ? 100 : 200,
+                ease: "easeInOut" // Added ease property for smoother animation
               }}
               whileHover={{ 
                 scale: 1.05,
+
                 backgroundColor: "rgba(255, 123, 0, 0.2)",
-                color: "#ff9d4d"
+                color: "#ff9d4d",
+                transition: { duration: 0.3, ease: "easeInOut" } // Added transition for smoother hover effect
               }}
             >
               {tag}

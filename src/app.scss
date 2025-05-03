@@ -42,17 +42,17 @@ a {
 }
 
 section {
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   scroll-snap-align: center;
   overflow: hidden;
   
   @include mobile {
     height: auto;
-    min-height: 100vh;
+    min-height: 100dvh;
   }
   @include tablet {
     height: auto;
-    min-height: 100vh;
+    min-height: 100dvh;
   }
 }
