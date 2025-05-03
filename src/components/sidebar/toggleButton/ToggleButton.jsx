@@ -1,55 +1,41 @@
-import { motion } from "framer-motion"; // Import framer-motion
 
-const ToggleButton = ({ setOpen, open }) => {
-  // Path animation variants
-  const pathVariants = {
-    closed: {
-      pathLength: 1,
-      transition: { duration: 0.5 }
-    },
-    open: {
-      pathLength: 1,
-      transition: { duration: 0.5 }
-    }
-  };
 
+import { motion } from "framer-motion";
+
+const ToggleButton = ({ setOpen }) => {
   return (
-    <motion.button 
-      onClick={() => setOpen((prev) => !prev)} 
-      className={`toggle-btn ${open ? 'open' : 'closed'}`}
-      whileHover={{ scale: 1.1, boxShadow: "0 8px 25px rgba(255, 123, 0, 0.7)" }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ type: "spring", stiffness: 400, damping: 17 }}
-    >
+    <button onClick={() => setOpen((prev) => !prev)}>
       <svg width="23" height="23" viewBox="0 0 23 23">
         <motion.path
           strokeWidth="3"
-          stroke="white"
+          stroke="white" // Changed to white for better contrast
           strokeLinecap="round"
-          d={open ? "M 3 16.5 L 17 2.5" : "M 2 2.5 L 20 2.5"}
-          variants={pathVariants}
-          initial={false}
-          animate={open ? "open" : "closed"}
+          variants={{
+            closed: { d: "M 2 2.5 L 20 2.5" },
+            open: { d: "M 3 16.5 L 17 2.5" },
+          }}
         />
         <motion.path
           strokeWidth="3"
-          stroke="white"
+          stroke="white" // Changed to white
           strokeLinecap="round"
           d="M 2 9.423 L 20 9.423"
-          animate={{ opacity: open ? 0 : 1 }}
-          transition={{ duration: 0.2 }}
+          variants={{
+            closed: { opacity: 1 },
+            open: { opacity: 0 },
+          }}
         />
         <motion.path
           strokeWidth="3"
-          stroke="white"
+          stroke="white" // Changed to white
           strokeLinecap="round"
-          d={open ? "M 3 2.5 L 17 16.346" : "M 2 16.346 L 20 16.346"}
-          variants={pathVariants}
-          initial={false}
-          animate={open ? "open" : "closed"}
+          variants={{
+            closed: { d: "M 2 16.346 L 20 16.346" },
+            open: { d: "M 3 2.5 L 17 16.346" },
+          }}
         />
       </svg>
-    </motion.button>
+    </button>
   );
 };
 

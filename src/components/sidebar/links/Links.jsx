@@ -1,53 +1,45 @@
-import { motion } from "framer-motion"; // Import framer-motion
+import { motion } from "framer-motion";
+
+const variants = {
+  open: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+  closed: {
+    transition: {
+      staggerChildren: 0.05,
+      staggerDirection: -1,
+    },
+  },
+};
+const itemVariants = {
+  open: {
+    y: 0,
+    opacity: 1,
+  },
+  closed: {
+    y: 50,
+    opacity: 0,
+  },
+};
 
 const Links = ({ items = ["Home", "About", "Academics", "Services", "Skills", "Contact"], setOpen }) => {
-  // Animation variants for links
-  const linkVariants = {
-    closed: { 
-      opacity: 0, 
-      y: 20,
-      transition: { duration: 0.2 }
-    },
-    open: (i) => ({ 
-      opacity: 1, 
-      y: 0,
-      transition: { 
-        delay: i * 0.1,
-        type: "spring",
-        stiffness: 300,
-        damping: 24
-      }
-    }),
-    hover: { 
-      scale: 1.1, 
-      color: "#ff7b00",
-      textShadow: "0 0 8px rgba(255, 123, 0, 0.5)",
-      y: -5,
-      transition: { type: "spring", stiffness: 400, damping: 10 }
-    },
-    tap: { 
-      scale: 0.95, 
-      transition: { type: "spring", stiffness: 400, damping: 17 }
-    }
-  };
-
   return (
-    <div className="links">
-      {items.map((item, i) => (
+    <motion.div className="links" variants={variants}>
+      {items.map((item) => (
         <motion.a
           href={`#${item}`}
           key={item}
-          className="nav-link"
-          onClick={() => setOpen(false)}
-          variants={linkVariants}
-          custom={i} // Pass index for staggered animations
-          whileHover="hover"
-          whileTap="tap"
+          variants={itemVariants}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setOpen(false)} // Close sidebar when a link is clicked
         >
           {item}
         </motion.a>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
