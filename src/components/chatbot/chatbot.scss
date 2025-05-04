@@ -1031,6 +1031,12 @@
         }
       }
       
+      img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin: 8px 0;
+      }
+      
       // Add responsive adjustments
       @media (min-width: 320px) and (max-width: 374px) {
         padding: 2px 1px;

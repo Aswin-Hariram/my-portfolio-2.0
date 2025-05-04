@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw'; // Add this import
 import "./chatbot.scss";
 
 const Chatbot = () => {
@@ -296,7 +297,12 @@ const Chatbot = () => {
                       )}
                       <div className="message-content">
                         {msg.sender === "bot" ? (
-                          <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
+                          <ReactMarkdown 
+                            remarkPlugins={[remarkGfm]}
+                            rehypePlugins={[rehypeRaw]} // Add this line to enable HTML rendering
+                          >
+                            {msg.text}
+                          </ReactMarkdown>
                         ) : (
                           msg.text
                         )}
