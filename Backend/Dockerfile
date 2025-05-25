@@ -1,13 +1,15 @@
 # Use an official Python runtime as a parent image
 # Using explicit platform for build stage to ensure consistent builds
-FROM --platform=$BUILDPLATFORM python:3.9-slim
+ARG PYTHON_VERSION=3.9-slim
+FROM --platform=$TARGETPLATFORM python:${PYTHON_VERSION}
 
 # Set build arguments for architecture-specific builds
 ARG TARGETARCH
 ARG TARGETOS
+ARG TARGETPLATFORM
 
 # Install architecture-specific dependencies
-RUN echo "Building for $TARGETOS/$TARGETARCH"
+RUN echo "Building for $TARGETPLATFORM"
 
 # Set the working directory in the container
 WORKDIR /app
@@ -32,7 +34,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose the port the app runs on
-EXPOSE 5001
+EXPOSE 8001
 
 # Command to run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:5001", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8001", "app:app"]

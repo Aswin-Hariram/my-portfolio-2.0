@@ -1,178 +1,160 @@
-# Aswin Hariram's Portfolio
+# Aswin Hariram - Portfolio v2.0
 
-A modern, responsive portfolio website with an AI-powered chatbot assistant that can answer questions about Aswin's skills, projects, and experience.
+![Portfolio Banner](https://via.placeholder.com/1200x400/1a1a2e/e94560?text=Aswin+Hariram+Portfolio)
 
-![Portfolio Screenshot](https://aswin-hariram.vercel.app/screenshot.png)
-
-## 🌟 Live Demo
-
-Visit the live portfolio at [https://aswin-hariram.vercel.app/](https://aswin-hariram.vercel.app/)
+A modern, responsive portfolio website showcasing my projects, skills, and experience. Built with React, Vite, and Flask, featuring an AI-powered chatbot and interactive UI components.
 
 ## 🚀 Features
 
-- **Modern UI/UX**: Responsive design with smooth animations using Framer Motion
-- **AI Chatbot Assistant**: Answers questions about skills, projects, and experience
-- **Contact Form**: Direct messaging capability with SMS notifications via Twilio
-- **Dockerized**: Easy deployment with Docker and Docker Compose
-- **Full-stack Application**: React frontend with Flask backend
-
-## 🏗️ Architecture
-
-The application consists of two main components:
-
-### Frontend
-- Built with React and Vite
-- Modern UI with Framer Motion animations
-- Responsive design for all device sizes
-- Communicates with the backend API for chatbot functionality
-
-### Backend
-- Flask-based API server
-- AI-powered chatbot using LangChain and Google Generative AI
-- PDF document parsing for portfolio information
-- Contact form handling with Twilio SMS notifications
+- **Modern UI/UX** with smooth animations using Framer Motion
+- **AI-Powered Chatbot** for interactive engagement
+- **Responsive Design** that works on all devices
+- **Project Showcase** with detailed case studies
+- **Contact Form** with email integration
+- **Dark/Light Mode** support
+- **Performance Optimized** with Vite
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- React 18
-- Vite
-- Framer Motion
-- SCSS
-- React Router
-- React Markdown
+- ⚛️ React 18
+- 🎨 SASS for styling
+- 🚀 Vite for build tooling
+- ✨ Framer Motion for animations
+- 📱 Responsive Design
+- 🔍 React Router for navigation
 
 ### Backend
-- Flask
-- LangChain
-- Google Generative AI
-- FAISS for vector storage
-- Twilio for notifications
+- 🐍 Python 3.10+
+- 🔥 Flask for API server
+- 🤖 LangChain for AI capabilities
+- 🧠 FAISS for vector storage
+- 📄 PDF processing with PyPDF2 and pdfminer
 
-## 🔧 Setup and Installation
+### DevOps
+- 🐳 Docker and Docker Compose
+- 🔄 CI/CD with GitHub Actions
+- ☁️ Deployment ready for Vercel/Netlify
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Docker and Docker Compose
-- Node.js (for local development)
-- Python 3.8+ (for local development)
 
-### Using Docker Compose (Recommended)
+- Node.js 16+ and npm/yarn
+- Python 3.10+
+- Docker (optional)
+- Git
 
-1. Clone the repository:
+### Local Development
+
+1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd my-portfolio-2.0
+   git clone https://github.com/your-username/portfolio-v2.git
+   cd portfolio-v2
    ```
 
-2. Configure environment variables:
-   - Create a `.env` file in the project root with the necessary variables (see `.env.example` if available)
-
-3. Build and run with Docker Compose:
-   ```bash
-   docker-compose up --build
-   ```
-
-4. Access the application:
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:5001
-
-### Manual Setup (Development)
-
-#### Frontend
-
-1. Navigate to the Frontend directory:
-   ```bash
-   cd Frontend
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env` file with the following variables:
-   ```
-   VITE_API_URL=http://localhost:5001
-   VITE_CHAT_API_URL=http://localhost:5001/chat
-   VITE_CONTACT_URL=http://localhost:5001/contact
-   VITE_RESUME_URL=<your-resume-url>
-   ```
-
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-#### Backend
-
-1. Navigate to the Backend directory:
+2. **Set up the Backend**
    ```bash
    cd Backend
-   ```
-
-2. Create a virtual environment:
-   ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
+   source venv/bin/activate  # On Windows: .\venv\Scripts\activate
    pip install -r requirements.txt
    ```
 
-4. Create a `.env` file with necessary API keys and configuration:
-   ```
-   GOOGLE_API_KEY=<your-google-api-key>
-   FLASK_ENV=development
-   SECRET_KEY=<your-secret-key>
-   PDF_PATH=document.pdf
-   
-   # Optional: Twilio configuration for contact form SMS notifications
-   TWILIO_ACCOUNT_SID=<your-twilio-account-sid>
-   TWILIO_AUTH_TOKEN=<your-twilio-auth-token>
-   TWILIO_PHONE_NUMBER=<your-twilio-phone-number>
-   NOTIFICATION_NUMBER=<your-notification-number>
-   ```
-
-5. Run the Flask server:
+3. **Set up the Frontend**
    ```bash
-   python app.py
+   cd ../Frontend
+   npm install
    ```
 
-## 📝 API Documentation
+4. **Environment Variables**
+   Create a `.env` file in the Backend directory with the following variables:
+   ```
+   FLASK_APP=app.py
+   FLASK_ENV=development
+   OPENAI_API_KEY=your_openai_api_key
+   GOOGLE_APPLICATION_CREDENTIALS=path/to/your/service-account.json
+   ```
 
-### Endpoints
+5. **Run the Application**
+   - In one terminal (Backend):
+     ```bash
+     cd Backend
+     flask run
+     ```
+   - In another terminal (Frontend):
+     ```bash
+     cd Frontend
+     npm run dev
+     ```
 
-- `GET /`: Health check endpoint
-- `POST /chat`: Send a message to the AI chatbot
-  - Request body: `{ "question": "Your question here" }`
-  - Response: `{ "status": "success", "answer": "Bot response" }`
-- `POST /reset`: Reset the chat history
-- `POST /contact`: Submit a contact form
-  - Request body: `{ "name": "Name", "email": "email@example.com", "phone": "1234567890" (optional), "message": "Your message" }`
-  - Response: `{ "status": "success", "message": "Contact submitted successfully", "sms_notification": "sent" }`
+### Using Docker
 
-## 🚢 Deployment
+```bash
+docker-compose up --build
+```
 
-The application is configured for deployment on Vercel (Frontend) and can be deployed to any cloud platform that supports Docker containers for the Backend.
+The application will be available at `http://localhost:5173`
 
-### Vercel Deployment (Frontend)
+## 📦 Project Structure
 
-The frontend is currently hosted at [https://aswin-hariram.vercel.app/](https://aswin-hariram.vercel.app/)
+```
+portfolio-v2/
+├── Backend/               # Flask backend
+│   ├── app.py             # Main application
+│   ├── bot.py             # Chatbot implementation
+│   ├── chat_handler.py    # Chat request handlers
+│   ├── contact_handler.py # Contact form handlers
+│   └── requirements.txt   # Python dependencies
+├── Frontend/              # React frontend
+│   ├── public/            # Static assets
+│   └── src/               # Source code
+│       ├── components/    # Reusable components
+│       ├── pages/         # Page components
+│       ├── styles/        # Global styles
+│       └── App.jsx        # Main App component
+├── docker-compose.yml     # Docker Compose config
+└── README.md             # This file
+```
 
-## 🤝 Contributing
+## 🤖 AI Chatbot Features
 
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
+The portfolio includes an AI-powered chatbot with the following capabilities:
 
-## 📄 License
+- Natural language conversations
+- Document processing (PDF, text)
+- Context-aware responses
+- Integration with multiple AI providers (OpenAI, Google AI)
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 🌐 Deployment
 
-## 📞 Contact
+### Vercel (Recommended)
 
-Aswin Hariram - [Contact through the portfolio website](https://aswin-hariram.vercel.app/)
+1. Push your code to a GitHub repository
+2. Import the project in Vercel
+3. Set up environment variables in project settings
+4. Deploy!
+
+### Netlify
+1. Connect your GitHub repository
+2. Set build command: `npm run build`
+3. Set publish directory: `Frontend/dist`
+4. Add environment variables
+5. Deploy site
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Vite](https://vitejs.dev/) for the amazing build tool
+- [Framer Motion](https://www.framer.com/motion/) for animations
+- [LangChain](https://www.langchain.com/) for AI capabilities
+- [React Icons](https://react-icons.github.io/react-icons/) for icons
 
 ---
 
-Built with ❤️ by Aswin Hariram
+<div align="center">
+  Made with ❤️ by Aswin Hariram
+</div>

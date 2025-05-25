@@ -1,47 +1,44 @@
 version: '3.8'
 
 services:
-  frontend:
-    build:
-      context: ./Frontend
-      dockerfile: Dockerfile
-    container_name: portfolio-frontend
-    restart: unless-stopped
-    ports:
-      - "3000:80"
-    environment:
-      - NODE_ENV=production
-      # For external access from browser
-      - VITE_API_URL=${VITE_API_URL:-http://localhost:5001}
-      - VITE_CHAT_API_URL=${VITE_CHAT_API_URL:-http://localhost:5001/chat}
-      - VITE_CONTACT_URL=${VITE_CONTACT_URL:-http://localhost:5001/contact}
-      - VITE_RESUME_URL=${VITE_RESUME_URL:-https://drive.google.com/file/d/15oiB_aswF5fdKCB2Db7Yu6pJE54bBHXM/view?usp=sharing}
-    depends_on:
-      - backend
-    networks:
-      - portfolio-network
-
   backend:
-    build:
-      context: ./Backend
-      dockerfile: Dockerfile
-    container_name: portfolio-backend
-    restart: unless-stopped
+    image: aswinhariram/portfolio-backend:latest
     ports:
-      - "5001:5001"
-    environment:
-      - FLASK_ENV=production
-      - PYTHONUNBUFFERED=1
-      - PORT=5001
-      # Add other environment variables from Backend/.env if needed
+      - "8001:8001"
+    env_file:
+      - ./Backend/.env
     volumes:
       - ./Backend:/app
-      - /app/__pycache__
+      - backend_data:/app/data
+    restart: unless-stopped
     networks:
       - portfolio-network
-    # Uncomment and add the following if you need to use the host network for specific services
-    # network_mode: "host"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  frontend:
+    image: aswinhariram/portfolio-frontend:latest
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
 
 networks:
   portfolio-network:
     driver: bridge
+
+volumes:
+  backend_data:

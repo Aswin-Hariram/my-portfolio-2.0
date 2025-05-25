@@ -1,66 +1,53 @@
-# Stage 1: Build the application
-# Using explicit platform for build stage to ensure consistent builds
-FROM --platform=$BUILDPLATFORM node:18-alpine as build
+# Step 1: Build the React (Vite) app
+ARG NODE_VERSION=18-alpine
+FROM --platform=$TARGETPLATFORM node:${NODE_VERSION} AS builder
 
-# Set build arguments for architecture-specific builds
-ARG TARGETARCH
-ARG TARGETOS
+# Set build arguments
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
 
-# Install necessary build tools for different architectures
-RUN echo "Building for $TARGETOS/$TARGETARCH"
+RUN echo "Building for $TARGETPLATFORM on $BUILDPLATFORM"
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
-COPY package-lock.json ./
-
 # Install dependencies
-RUN npm ci
+COPY package.json package-lock.json ./
+RUN npm install
 
 # Copy source code
 COPY . .
 
+# Set environment variables from build args
+ARG VITE_Contact_URL
+ARG VITE_RESUME_URL
+ARG VITE_CHAT_API_URL
 
-# Build the application
+ENV VITE_Contact_URL=${VITE_Contact_URL}
+ENV VITE_RESUME_URL=${VITE_RESUME_URL}
+ENV VITE_CHAT_API_URL=${VITE_CHAT_API_URL}
+ENV NODE_ENV=production
+
+# Build the app (for Vite, output goes to /app/dist)
 RUN npm run build
 
-# Stage 2: Serve the application using Nginx
-FROM nginx:stable-alpine
+# Step 2: Serve the app using NGINX
+FROM nginx:alpine
 
-# Remove default nginx config
-RUN rm /etc/nginx/conf.d/default.conf
+# Remove default NGINX static files
+RUN rm -rf /usr/share/nginx/html/*
 
-# Copy custom nginx config
-COPY nginx.conf /etc/nginx/nginx.conf
+# Copy the build from builder
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy built assets from build stage
-COPY --from=build /app/dist /usr/share/nginx/html
+# Optional: Custom NGINX configuration
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Create a placeholder favicon if it doesn't exist
-RUN touch /usr/share/nginx/html/favicon.ico
+# Copy static files (optional: if you have favicon, robots.txt, etc.)
+# COPY public /usr/share/nginx/html
 
-# Set proper permissions
-RUN chown -R nginx:nginx /usr/share/nginx/html && \
-    chmod -R 755 /usr/share/nginx/html && \
-    chown -R nginx:nginx /var/cache/nginx && \
-    chown -R nginx:nginx /var/log/nginx && \
-    chown -R nginx:nginx /etc/nginx && \
-    touch /var/run/nginx.pid && \
-    chown -R nginx:nginx /var/run/nginx.pid && \
-    chmod -R 755 /var/log/nginx && \
-    chmod -R 755 /var/cache/nginx
-
-# Switch to nginx user for better security
-USER nginx
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:80/ || exit 1
-
-# Expose port 80
+# Expose port
 EXPOSE 80
 
-# Start Nginx
+# Start NGINX
 CMD ["nginx", "-g", "daemon off;"]
