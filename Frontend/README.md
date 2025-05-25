@@ -1,27 +1,74 @@
-# Portfolio Frontend
+<div align="center">
+
+# 🚀 Aswin's Portfolio - Frontend
+
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
+[![SASS](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer%20Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+[![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)](https://reactrouter.com/)
+[![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://www.netlify.com/)
+
+![Portfolio Banner](https://via.placeholder.com/1200x400/1a1a2e/e94560?text=Aswin's+Portfolio+Frontend)
 
 A modern, responsive React-based frontend for Aswin Hariram's portfolio website. This application features a clean UI with smooth animations, an AI-powered chatbot assistant, and responsive design for all device sizes.
 
-![Frontend Screenshot](https://aswin-hariram.vercel.app/screenshot.png)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
 
-## 🚀 Features
+</div>
 
-- **Modern UI/UX**: Built with React and styled with SCSS
-- **Responsive Design**: Optimized for all device sizes from mobile to desktop
-- **Smooth Animations**: Implemented using Framer Motion
-- **AI Chatbot**: Interactive assistant that answers questions about Aswin's skills and experience
-- **Contact Form**: Interactive form with validation and status feedback
-- **Markdown Support**: Renders formatted text in the chatbot using React Markdown
+## ✨ Features
+
+<div align="center">
+
+| Feature | Description |
+|---------|-------------|
+| 🎨 **Modern UI/UX** | Built with React 18 and styled with SCSS modules |
+| 📱 **Responsive Design** | Fully responsive layout that works on all devices |
+| 🎭 **Smooth Animations** | Implemented using Framer Motion for buttery smooth transitions |
+| 🤖 **AI Chatbot** | Interactive assistant powered by LangChain and OpenAI |
+| 📧 **Contact Form** | Secure form with validation and real-time feedback |
+| 📝 **Markdown Support** | Renders rich text content with React Markdown |
+| 🌓 **Dark/Light Mode** | Built-in theme switcher |
+| ⚡ **Optimized Performance** | Code splitting and lazy loading for fast load times |
+
+</div>
 
 ## 🛠️ Tech Stack
 
-- **React 18**: Modern component-based UI library
-- **Vite**: Next-generation frontend build tool
-- **Framer Motion**: Animation library for React
-- **SCSS**: Advanced CSS preprocessor
-- **React Router**: For page navigation
-- **React Markdown**: For rendering markdown content
-- **EmailJS**: For contact form functionality
+<div align="center">
+
+| Category | Technologies |
+|----------|--------------|
+| **Frontend** | React 18, Vite, TypeScript |
+| **Styling** | SCSS Modules, CSS Variables |
+| **Animation** | Framer Motion, GSAP |
+| **State Management** | React Context API |
+| **Routing** | React Router v6 |
+| **Form Handling** | React Hook Form |
+| **Markdown** | React Markdown |
+| **API** | Axios, WebSockets |
+| **Testing** | Jest, React Testing Library |
+| **Linting** | ESLint, Prettier |
+
+</div>
+
+### Key Dependencies
+
+```json
+{
+  "@emailjs/browser": "^3.11.0",
+  "@gsap/react": "^2.1.2",
+  "@headlessui/react": "^2.2.2",
+  "framer-motion": "^10.18.0",
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "react-markdown": "^10.1.0",
+  "react-router-dom": "^7.5.3",
+  "sass": "^1.68.0"
+}
+```
 
 ## 🔧 Project Structure
 
