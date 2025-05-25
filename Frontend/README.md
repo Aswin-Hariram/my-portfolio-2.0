@@ -10,6 +10,7 @@ A modern, responsive React-based frontend for Aswin Hariram's portfolio website.
 - **Responsive Design**: Optimized for all device sizes from mobile to desktop
 - **Smooth Animations**: Implemented using Framer Motion
 - **AI Chatbot**: Interactive assistant that answers questions about Aswin's skills and experience
+- **Contact Form**: Interactive form with validation and status feedback
 - **Markdown Support**: Renders formatted text in the chatbot using React Markdown
 
 ## 🛠️ Tech Stack
@@ -119,9 +120,27 @@ The AI-powered chatbot assistant (`src/components/chatbot/Chatbot.jsx`) provides
 The frontend communicates with the backend API for:
 
 1. **Chatbot functionality**: Sends user messages and receives AI-generated responses
-2. **Contact form**: Submits user inquiries
+2. **Contact form**: Submits user inquiries with name, email, optional phone number, and message
 
 API endpoints are configured through environment variables for flexibility across different environments.
+
+### Contact Form Integration
+
+The contact form (`src/components/contact/ContactForm.jsx`) provides a user-friendly interface for visitors to send messages. Key features include:
+
+- **Form Validation**: Client-side validation for required fields and email format
+- **Status Feedback**: Visual indicators for loading, success, and error states
+- **Responsive Design**: Adapts to different screen sizes
+- **Animation**: Smooth animations using Framer Motion
+
+#### Contact Form Workflow:
+
+1. User fills out the form with name, email, optional phone number, and message
+2. Client-side validation ensures all required fields are filled and email format is valid
+3. Form data is sent to the backend API endpoint specified in the environment variable `VITE_CONTACT_URL`
+4. Loading state is shown during submission
+5. Success or error message is displayed based on the API response
+6. Form is reset after successful submission
 
 ## 🚢 Deployment
 

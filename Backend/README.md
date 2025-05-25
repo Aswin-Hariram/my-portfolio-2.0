@@ -7,7 +7,7 @@ An AI-powered Flask backend for Aswin Hariram's portfolio website. This service 
 - **AI-powered Chatbot**: Uses LangChain and Google Generative AI to answer questions about Aswin's portfolio
 - **Document Processing**: Parses PDF resume/portfolio document for accurate information retrieval
 - **Vector Search**: Utilizes FAISS for efficient semantic search in the document
-- **Contact Form Handling**: Processes and forwards contact form submissions
+- **Contact Form Handling**: Processes and forwards contact form submissions with SMS notifications via Twilio
 - **Dockerized**: Easy deployment with Docker
 - **CORS Support**: Configured for cross-origin requests from the frontend
 
@@ -67,6 +67,12 @@ Backend/
    FLASK_ENV=development
    SECRET_KEY=<your-secret-key>
    PDF_PATH=document.pdf
+   
+   # Twilio configuration for contact form SMS notifications (optional)
+   TWILIO_ACCOUNT_SID=<your-twilio-account-sid>
+   TWILIO_AUTH_TOKEN=<your-twilio-auth-token>
+   TWILIO_PHONE_NUMBER=<your-twilio-phone-number>
+   NOTIFICATION_NUMBER=<your-notification-number>
    ```
 
 ### Running the Server
@@ -136,13 +142,14 @@ Reset the chat history.
 
 #### `POST /contact`
 
-Submit a contact form.
+Submit a contact form. This endpoint processes contact form submissions and sends SMS notifications via Twilio when configured.
 
 **Request Body:**
 ```json
 {
   "name": "John Doe",
   "email": "john@example.com",
+  "phone": "1234567890",  // Optional
   "message": "I'd like to discuss a project"
 }
 ```
@@ -151,7 +158,16 @@ Submit a contact form.
 ```json
 {
   "status": "success",
-  "message": "Contact form submitted successfully"
+  "message": "Contact submitted successfully",
+  "sms_notification": "sent"  // or "not sent" if Twilio is not configured
+}
+```
+
+**Error Response:**
+```json
+{
+  "status": "error",
+  "message": "Missing fields: name, email"
 }
 ```
 
@@ -168,6 +184,32 @@ Submit a contact form.
    - Returns the generated response
 
 4. **Conversation Context**: The system maintains conversation history for context-aware responses.
+
+## 📱 Contact Form System
+
+### How It Works
+
+1. **Form Submission**: The frontend sends a POST request to the `/contact` endpoint with user details.
+
+2. **Data Validation**: The backend validates the required fields (name, email, message).
+
+3. **SMS Notification**: When properly configured with Twilio:
+   - The system sends an SMS notification to the specified number
+   - The SMS includes the sender's name, email, phone (if provided), and a preview of their message
+
+4. **Response**: The system returns a success or error response to the frontend.
+
+### Twilio Integration
+
+The contact form handler uses Twilio to send SMS notifications when new contact submissions are received. This is optional and will gracefully degrade if Twilio credentials are not provided.
+
+**Required Environment Variables for Twilio:**
+- `TWILIO_ACCOUNT_SID`: Your Twilio account SID
+- `TWILIO_AUTH_TOKEN`: Your Twilio authentication token
+- `TWILIO_PHONE_NUMBER`: The Twilio phone number to send messages from
+- `NOTIFICATION_NUMBER`: The phone number to receive notifications
+
+**Note:** The `TWILIO_PHONE_NUMBER` and `NOTIFICATION_NUMBER` must be different numbers as per Twilio's requirements.
 
 ## 🚢 Deployment
 

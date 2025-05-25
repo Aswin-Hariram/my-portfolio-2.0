@@ -12,7 +12,7 @@ Visit the live portfolio at [https://aswin-hariram.vercel.app/](https://aswin-ha
 
 - **Modern UI/UX**: Responsive design with smooth animations using Framer Motion
 - **AI Chatbot Assistant**: Answers questions about skills, projects, and experience
-- **Contact Form**: Direct messaging capability
+- **Contact Form**: Direct messaging capability with SMS notifications via Twilio
 - **Dockerized**: Easy deployment with Docker and Docker Compose
 - **Full-stack Application**: React frontend with Flask backend
 
@@ -30,7 +30,7 @@ The application consists of two main components:
 - Flask-based API server
 - AI-powered chatbot using LangChain and Google Generative AI
 - PDF document parsing for portfolio information
-- Contact form handling
+- Contact form handling with Twilio SMS notifications
 
 ## 🛠️ Tech Stack
 
@@ -127,6 +127,12 @@ The application consists of two main components:
    FLASK_ENV=development
    SECRET_KEY=<your-secret-key>
    PDF_PATH=document.pdf
+   
+   # Optional: Twilio configuration for contact form SMS notifications
+   TWILIO_ACCOUNT_SID=<your-twilio-account-sid>
+   TWILIO_AUTH_TOKEN=<your-twilio-auth-token>
+   TWILIO_PHONE_NUMBER=<your-twilio-phone-number>
+   NOTIFICATION_NUMBER=<your-notification-number>
    ```
 
 5. Run the Flask server:
@@ -144,7 +150,8 @@ The application consists of two main components:
   - Response: `{ "status": "success", "answer": "Bot response" }`
 - `POST /reset`: Reset the chat history
 - `POST /contact`: Submit a contact form
-  - Request body: `{ "name": "Name", "email": "email@example.com", "message": "Your message" }`
+  - Request body: `{ "name": "Name", "email": "email@example.com", "phone": "1234567890" (optional), "message": "Your message" }`
+  - Response: `{ "status": "success", "message": "Contact submitted successfully", "sms_notification": "sent" }`
 
 ## 🚢 Deployment
 
