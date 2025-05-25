@@ -14,9 +14,6 @@
 ### A modern, responsive portfolio website showcasing my projects, skills, and experience.
 ### Built with React, Vite, and Flask, featuring an AI-powered chatbot and interactive UI components.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
-
 </div>
 
 ## ✨ Features
@@ -260,29 +257,14 @@ The portfolio includes an AI-powered chatbot with the following capabilities:
 4. Add environment variables
 5. Deploy site
 
-## 📝 License
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-[![Vite](https://img.shields.io/badge/Vite-B73BFE?style=flat-square&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
-[![Framer Motion](https://img.shields.io/badge/Framer%20Motion-0055FF?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion/)
-[![LangChain](https://img.shields.io/badge/LangChain-FF6B00?style=flat-square&logo=chainlink&logoColor=white)](https://www.langchain.com/)
-[![React Icons](https://img.shields.io/badge/React%20Icons-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react-icons.github.io/react-icons/)
 
 ---
 
-<div align="center">
 
-<img src="https://via.placeholder.com/150x150/1a1a2e/e94560?text=AH" width="100" height="100" style="border-radius:50%">
 
-### Made with ❤️ by Aswin Hariram
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/your-username)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-profile)
 [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/your-handle)
 
-</div>
+### Made with ❤️ by Aswin Hariram
