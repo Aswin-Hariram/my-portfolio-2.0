@@ -1,20 +1,22 @@
 <div align="center">
 
-# 🚀 Aswin's Portfolio - Backend
+# 🔥 Aswin's Portfolio - Backend
 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-[![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)](https://openai.com/)
-[![LangChain](https://img.shields.io/badge/LangChain-FF6B00?style=for-the-badge&logo=langchain&logoColor=white)](https://python.langchain.com/)
-[![FAISS](https://img.shields.io/badge/FAISS-FF6B00?style=for-the-badge&logo=facebook&logoColor=white)](https://faiss.ai/)
+[![Google AI](https://img.shields.io/badge/Google_AI-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.com/)
+[![LangChain](https://img.shields.io/badge/LangChain-FF6B00?style=for-the-badge&logo=chainlink&logoColor=white)](https://python.langchain.com/)
+[![FAISS](https://img.shields.io/badge/FAISS-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://faiss.ai/)
 
-![Backend Banner](https://via.placeholder.com/1200x400/1a1a2e/00b4d8?text=Aswin's+Portfolio+Backend+API)
+<img src="https://via.placeholder.com/1200x400/1a1a2e/00b4d8?text=Aswin's+Portfolio+Backend+API" alt="Backend Banner" style="border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
 
-A robust backend service powering Aswin's portfolio, featuring an AI chatbot, document processing, and API endpoints. Built with Python, Flask, and modern AI technologies.
+### A robust backend service powering Aswin's portfolio, featuring an AI chatbot, 
+### document processing, and API endpoints. Built with Python, Flask, and Google Gemini AI.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge)](https://www.python.org/)
 
 </div>
 
@@ -24,186 +26,318 @@ A robust backend service powering Aswin's portfolio, featuring an AI chatbot, do
 
 | Feature | Description |
 |---------|-------------|
-| 🤖 **AI Chatbot** | Powered by LangChain with support for multiple LLM providers |
-| 📄 **Document Processing** | Extract and process PDFs, text, and markdown files |
+| 🤖 **AI Chatbot** | Powered by LangChain with Google Gemini AI |
+| 📄 **Document Processing** | Extract and process PDF resume data |
 | 🔍 **Semantic Search** | FAISS-based vector similarity search |
-| 🔄 **RESTful API** | Well-documented endpoints for frontend integration |
-| 🔒 **Authentication** | Secure API key validation |
-| 🚀 **WebSocket Support** | Real-time communication for chat functionality |
-| 📊 **Rate Limiting** | Prevent abuse of API endpoints |
+| 🔄 **RESTful API** | Simple endpoints for frontend integration |
+| 📱 **Contact Form** | SMS notifications via Twilio integration |
+| 💬 **Chat History** | Session-based chat history management |
+| 🐳 **Docker Support** | Containerized deployment ready |
 | 📝 **Logging** | Comprehensive logging for debugging and monitoring |
+
+<img src="https://via.placeholder.com/800x250/1a1a2e/e94560?text=AI+Powered+Backend" alt="AI Backend" style="border-radius:8px; margin-top:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
 
 </div>
 
-## 🛠️ Tech Stack
+## 🔧️ Tech Stack
 
 <div align="center">
 
 | Category | Technologies |
-|----------|--------------|
-| **Language** | Python 3.10+ |
-| **Framework** | Flask, Flask-CORS |
-| **AI/ML** | LangChain, OpenAI, Google AI |
-| **Vector Database** | FAISS |
-| **Document Processing** | PyPDF2, pdfminer.six |
-| **API Documentation** | Swagger/OpenAPI |
-| **Containerization** | Docker, Docker Compose |
-| **Testing** | pytest |
-| **Linting/Formatting** | Black, Flake8 |
+|----------|--------------|  
+| **Language** | [![Python 3.9+](https://img.shields.io/badge/Python%203.9+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/) |
+| **Framework** | [![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white)](https://flask.palletsprojects.com/) [![Flask-CORS](https://img.shields.io/badge/Flask--CORS-000000?style=flat-square&logo=flask&logoColor=white)](https://flask-cors.readthedocs.io/) |
+| **AI/ML** | [![LangChain](https://img.shields.io/badge/LangChain-FF6B00?style=flat-square&logo=chainlink&logoColor=white)](https://python.langchain.com/) [![Google Gemini](https://img.shields.io/badge/Google%20Gemini-4285F4?style=flat-square&logo=google&logoColor=white)](https://ai.google.dev/) |
+| **Vector Database** | [![FAISS](https://img.shields.io/badge/FAISS-1877F2?style=flat-square&logo=facebook&logoColor=white)](https://faiss.ai/) |
+| **Document Processing** | [![PyPDF2](https://img.shields.io/badge/PyPDF2-3776AB?style=flat-square&logo=adobe-acrobat-reader&logoColor=white)](https://pypi.org/project/PyPDF2/) [![pdfminer.six](https://img.shields.io/badge/pdfminer.six-3776AB?style=flat-square&logo=adobe-acrobat-reader&logoColor=white)](https://pypi.org/project/pdfminer.six/) |
+| **Messaging** | [![Twilio](https://img.shields.io/badge/Twilio-F22F46?style=flat-square&logo=twilio&logoColor=white)](https://www.twilio.com/) |
+| **Containerization** | [![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com/) |
+| **Deployment** | [![Gunicorn](https://img.shields.io/badge/Gunicorn-499848?style=flat-square&logo=gunicorn&logoColor=white)](https://gunicorn.org/) |
+| **Utilities** | [![python-dotenv](https://img.shields.io/badge/python--dotenv-3776AB?style=flat-square&logo=python&logoColor=white)](https://pypi.org/project/python-dotenv/) |
 
 </div>
 
 ### Key Dependencies
 
+<div align="center">
+
 ```python
 # requirements.txt
-Flask==2.3.3
-Flask-CORS==4.0.0
-gunicorn==21.2.0
-python-dotenv==1.0.0
-langchain-core==0.1.0
-langchain-community==0.0.10
-langchain-openai==0.0.1
-faiss-cpu==1.7.4
-PyPDF2==3.0.1
-python-multipart==0.0.6
-python-jose==3.3.0
+Flask
+Flask-Cors
+gunicorn
+python-dotenv
+langchain-core
+langchain-community
+langchain_google_genai
+faiss-cpu
+PyPDF2
+langchain-openai
+pdfminer.six
+chromadb
+requests
+google-cloud-aiplatform
+twilio
+markdown
 ```
+
+[![Flask](https://img.shields.io/badge/Flask-Latest-black?style=flat-square&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![LangChain](https://img.shields.io/badge/LangChain-Latest-FF6B00?style=flat-square&logo=chainlink&logoColor=white)](https://python.langchain.com/)
+[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-2.0-4285F4?style=flat-square&logo=google&logoColor=white)](https://ai.google.dev/)
+
+</div>
 
 ## 🏗️ Project Structure
 
+<div align="center">
+
 ```
 Backend/
-├── app.py                # Main application entry point
-├── bot.py                # Chatbot implementation
-├── chat_handler.py       # Chat request handlers
-├── contact_handler.py    # Contact form handlers
-├── document_processor.py # Document processing logic
-├── vector_store.py       # FAISS vector store wrapper
-├── config.py             # Configuration settings
-├── requirements.txt      # Python dependencies
-└── tests/                # Test files
-    ├── __init__.py
-    ├── test_app.py
-    └── test_chat.py
+├─ 🚀 app.py                # Main application entry point
+├─ 💬 chat_handler.py       # Chat request handlers
+├─ 📫 contact_handler.py    # Contact form handlers
+├─ 📄 document.pdf          # Resume document for AI processing
+├─ 📢 Dockerfile           # Container configuration
+├─ 🔐 .env                  # Environment variables (gitignored)
+├─ 🚫 .gitignore            # Git ignore configuration
+├─ 🚫 .dockerignore         # Docker ignore configuration
+├─ 📚 data/                 # Directory for storing processed data
+├─ 💶 requirements.txt      # Python dependencies
+└─ 🐧 venv/                 # Python virtual environment (gitignored)
 ```
+
+</div>
 
 ## 🚀 Getting Started
 
+<div align="center">
+
 ### Prerequisites
 
-- Python 3.10 or higher
-- pip (Python package manager)
-- Docker (optional)
-- OpenAI API key
-- Google Cloud credentials (optional)
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![pip](https://img.shields.io/badge/pip-latest-3775A9?style=flat-square&logo=pypi&logoColor=white)](https://pip.pypa.io/)
+[![Docker](https://img.shields.io/badge/Docker-optional-2496ED?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com/)
+[![Google AI API](https://img.shields.io/badge/Google%20AI%20API-required-4285F4?style=flat-square&logo=google&logoColor=white)](https://ai.google.com/)
+[![Twilio](https://img.shields.io/badge/Twilio-optional-F22F46?style=flat-square&logo=twilio&logoColor=white)](https://www.twilio.com/)
+
+</div>
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/portfolio-v2.git
-   cd portfolio-v2/Backend
-   ```
+<details>
+<summary>📋 Step-by-Step Setup Guide</summary>
 
-2. **Create a virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: .\venv\Scripts\activate
-   ```
+#### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/my-portfolio-2.0.git
+cd my-portfolio-2.0/Backend
+```
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+#### 2. Create a virtual environment
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: .\venv\Scripts\activate
+```
 
-4. **Set up environment variables**
-   Create a `.env` file in the Backend directory:
-   ```env
-   FLASK_APP=app.py
-   FLASK_ENV=development
-   OPENAI_API_KEY=your_openai_api_key
-   GOOGLE_APPLICATION_CREDENTIALS=path/to/your/service-account.json
-   VECTOR_STORE_PATH=./data/vector_store
-   ```
+#### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+#### 4. Set up environment variables
+Create a `.env` file in the Backend directory:
+```env
+FLASK_APP=app.py
+FLASK_ENV=development
+SECRET_KEY=your_secret_key_here
+PDF_PATH=document.pdf
+
+# For Twilio integration (optional)
+TWILIO_ACCOUNT_SID=your_twilio_account_sid
+TWILIO_AUTH_TOKEN=your_twilio_auth_token
+TWILIO_PHONE_NUMBER=your_twilio_phone_number
+NOTIFICATION_NUMBER=your_notification_phone_number
+```
+</details>
 
 ### Running the Server
 
+<div align="center">
+
 #### Development Mode
+
+[![Flask](https://img.shields.io/badge/Run%20with-Flask-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+
 ```bash
-flask run --port 5000
+python app.py
+# Or
+flask run --port 8001
 ```
 
 #### Production Mode (with Gunicorn)
+
+[![Gunicorn](https://img.shields.io/badge/Run%20with-Gunicorn-499848?style=for-the-badge&logo=gunicorn&logoColor=white)](https://gunicorn.org/)
+
 ```bash
-gunicorn -w 4 -b :5000 app:app
+gunicorn --bind 0.0.0.0:8001 app:app
 ```
 
 #### Using Docker
+
+[![Docker](https://img.shields.io/badge/Run%20with-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+
 ```bash
 docker build -t portfolio-backend .
-docker run -p 5000:5000 portfolio-backend
+docker run -p 8001:8001 portfolio-backend
 ```
+
+</div>
 
 ## 🌐 API Endpoints
 
-### Chat
-- `POST /api/chat` - Send a message to the chatbot
+<div align="center">
+
+<img src="https://via.placeholder.com/800x200/1a1a2e/00b4d8?text=RESTful+API+Endpoints" alt="API Endpoints" style="border-radius:8px; margin-bottom:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+
+</div>
+
+### Root Endpoint
+- `GET /` - Check if the API is running
   ```json
   {
-    "message": "Tell me about Aswin's experience",
-    "session_id": "unique-session-id"
+    "status": "success",
+    "message": "Portfolio AI API is running",
+    "version": "2.0"
   }
   ```
 
-### Document Upload
-- `POST /api/upload` - Upload a document for processing
-  ```
-  Content-Type: multipart/form-data
-  
-  file: [binary file]
-  process_type: "text" | "vector"
-  ```
-
-### Health Check
-- `GET /api/health` - Check if the API is running
+### Chat
+- `POST /chat` - Send a message to the AI chatbot
   ```json
   {
-    "status": "healthy",
-    "timestamp": "2025-05-25T15:30:00Z"
+    "question": "Tell me about Aswin's experience"
+  }
+  ```
+  Response:
+  ```json
+  {
+    "answer": "[Markdown formatted response about Aswin's experience]",
+    "status": "success",
+    "processing_time": 1.25
+  }
+  ```
+
+### Reset Chat History
+- `POST /reset` - Reset the chat history
+  ```json
+  {}
+  ```
+  Response:
+  ```json
+  {
+    "status": "success",
+    "message": "Chat history reset successfully"
+  }
+  ```
+
+### Contact Form
+- `POST /contact` - Submit contact form information
+  ```json
+  {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "phone": "1234567890", // Optional
+    "message": "I'd like to discuss a project opportunity."
+  }
+  ```
+  Response:
+  ```json
+  {
+    "status": "success",
+    "message": "Contact submitted successfully",
+    "sms_notification": "sent" // or "not sent"
   }
   ```
 
 ## 🧪 Testing
 
-Run the test suite with pytest:
+<div align="center">
+
+### Manual Testing
+
+You can manually test the API endpoints using tools like Postman or curl:
 
 ```bash
-pytest tests/
+# Test the root endpoint
+curl http://localhost:8001/
+
+# Test the chat endpoint
+curl -X POST http://localhost:8001/chat \
+  -H "Content-Type: application/json" \
+  -d '{"question":"Tell me about Aswin"}'
+
+# Test the contact endpoint
+curl -X POST http://localhost:8001/contact \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Test User","email":"test@example.com","message":"Test message"}'
 ```
+
+<img src="https://via.placeholder.com/800x150/1a1a2e/4CAF50?text=API+Testing" alt="Testing" style="border-radius:8px; margin-top:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+
+</div>
 
 ## 🔧 Configuration
 
+<div align="center">
+
 | Variable | Description | Default |
-|----------|-------------|---------|
+|----------|-------------|----------|
+| `FLASK_APP` | Flask application entry point | `app.py` |
 | `FLASK_ENV` | Environment (development/production) | `development` |
-| `OPENAI_API_KEY` | OpenAI API key | - |
-| `VECTOR_STORE_PATH` | Path to store FAISS index | `./data/vector_store` |
-| `MAX_FILE_SIZE_MB` | Maximum file upload size (MB) | `10` |
-| `RATE_LIMIT` | Requests per minute | `60` |
+| `SECRET_KEY` | Secret key for session management | Random value if not set |
+| `PDF_PATH` | Path to the PDF document for AI processing | `document.pdf` |
+| `PORT` | Port for the server to run on | `8001` |
+| `TWILIO_ACCOUNT_SID` | Twilio account SID for SMS notifications | - |
+| `TWILIO_AUTH_TOKEN` | Twilio authentication token | - |
+| `TWILIO_PHONE_NUMBER` | Twilio phone number to send SMS from | - |
+| `NOTIFICATION_NUMBER` | Phone number to receive notifications | - |
+
+</div>
 
 ## 🚀 Deployment
 
+<div align="center">
+
 ### Docker
 
+[![Docker](https://img.shields.io/badge/Deploy%20with-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+
 ```bash
+# Build the Docker image
 docker build -t portfolio-backend .
-docker run -d -p 5000:5000 --env-file .env portfolio-backend
+
+# Run the container
+docker run -d -p 8001:8001 --env-file .env portfolio-backend
 ```
 
-### Kubernetes
+The Dockerfile is configured to use the official Python 3.9 slim image and sets up the necessary environment for running the application with Gunicorn.
 
-Example deployment YAML:
+<img src="https://via.placeholder.com/800x150/1a1a2e/e94560?text=Ready+for+Production" alt="Deployment" style="border-radius:8px; margin-top:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+
+</div>
+
+---
+
+<div align="center">
+
+<img src="https://via.placeholder.com/150x150/1a1a2e/e94560?text=AH" width="100" height="100" style="border-radius:50%; margin-top:30px;">
+
+### Developed by Aswin Hariram
+
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/your-username)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-profile)
+
+</div>
 
 ```yaml
 apiVersion: apps/v1
@@ -232,25 +366,41 @@ spec:
 
 ## 📚 Documentation
 
-For detailed API documentation, visit `/docs` when the server is running locally.
+This README serves as the primary documentation for the backend service. The code is also well-commented to help with understanding the implementation details.
+
+### Key Components
+
+- **app.py**: Main application entry point that defines the API routes
+- **chat_handler.py**: Handles the AI chat functionality using LangChain and Google Gemini
+- **contact_handler.py**: Manages the contact form submissions and Twilio SMS notifications
+- **document.pdf**: The resume/CV document that the AI uses to answer questions about Aswin
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+Contributions are welcome! To contribute to this project:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
 - [Flask](https://flask.palletsprojects.com/) - The web framework used
-- [LangChain](https://python.langchain.com/) - For AI capabilities
-- [FAISS](https://faiss.ai/) - For efficient similarity search
+- [LangChain](https://python.langchain.com/) - For AI orchestration capabilities
+- [Google Gemini](https://ai.google.dev/) - For AI language model capabilities
+- [FAISS](https://faiss.ai/) - For efficient similarity search and vector storage
+- [Twilio](https://www.twilio.com/) - For SMS notification capabilities
 - [Docker](https://www.docker.com/) - For containerization
 
 ---
 
 <div align="center">
-  Made with ❤️ by Aswin Hariram
+  <p>Made with ❤️ by Aswin Hariram</p>
+  <p>© 2025 - Portfolio Backend API v2.0</p>
 </div>

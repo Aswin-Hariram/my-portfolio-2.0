@@ -9,6 +9,7 @@ This document provides detailed technical documentation for the AI components us
 - [Vector Database](#-vector-database)
 - [API Endpoints](#-api-endpoints)
 - [Environment Variables](#-environment-variables)
+- [Contact Form Integration](#-contact-form-integration)
 - [Troubleshooting](#-troubleshooting)
 
 ## 🌐 Architecture Overview
