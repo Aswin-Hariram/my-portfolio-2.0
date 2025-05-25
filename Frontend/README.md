@@ -10,14 +10,12 @@
 [![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://www.netlify.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-<img src="https://via.placeholder.com/1200x400/1a1a2e/e94560?text=Aswin's+Portfolio+Frontend" alt="Portfolio Banner" style="border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+<img width="1455" alt="Screenshot 2025-05-25 at 10 03 04 PM" src="https://github.com/user-attachments/assets/c9cc3b5c-f06a-4f67-b880-f4aeaa7900cf" />
+
+[![Visit Live Site](https://img.shields.io/badge/Visit%20Live%20Site-FF6B6B?style=for-the-badge&logo=netlify&logoColor=white&labelColor=242424&color=61DAFB)](https://your-portfolio-url.netlify.app/)
 
 ### A modern, responsive React-based frontend for Aswin Hariram's portfolio website.
 ### Features a clean UI with smooth animations, an AI-powered chatbot assistant, and responsive design for all device sizes.
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
-[![React 18](https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
 
 </div>
 
@@ -26,7 +24,7 @@
 <div align="center">
 
 | Feature | Description |
-|---------|-------------|
+|:---------|:-------------|
 | 🎨 **Modern UI/UX** | Built with React 18 and styled with SCSS modules |
 | 📱 **Responsive Design** | Fully responsive layout that works on all devices |
 | 🎭 **Smooth Animations** | Implemented using Framer Motion for buttery smooth transitions |
@@ -36,7 +34,7 @@
 | 🌓 **Dark/Light Mode** | Built-in theme switcher |
 | ⚡ **Optimized Performance** | Code splitting and lazy loading for fast load times |
 
-<img src="https://via.placeholder.com/800x250/1a1a2e/00b4d8?text=Modern+React+Frontend" alt="Modern Frontend" style="border-radius:8px; margin-top:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+
 
 </div>
 
@@ -45,7 +43,7 @@
 <div align="center">
 
 | Category | Technologies |
-|----------|--------------|  
+|:----------:|:-------------:|
 | **Frontend** | [![React 18](https://img.shields.io/badge/React%2018-61DAFB?style=flat-square&logo=react&logoColor=black)](https://reactjs.org/) [![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/) [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) |
 | **Styling** | [![SCSS Modules](https://img.shields.io/badge/SCSS%20Modules-CC6699?style=flat-square&logo=sass&logoColor=white)](https://sass-lang.com/) [![CSS Variables](https://img.shields.io/badge/CSS%20Variables-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) |
 | **Animation** | [![Framer Motion](https://img.shields.io/badge/Framer%20Motion-0055FF?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion/) [![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=white)](https://greensock.com/gsap/) |
@@ -61,7 +59,7 @@
 
 ### Key Dependencies
 
-<div align="center">
+<div>
 
 ```json
 {
@@ -87,13 +85,17 @@
 
 <div align="center">
 
+<table>
+  <tr>
+    <td align="left">
+
 ```
 Frontend/
 ├── 📁 public/             # Static assets
 ├── 📂 src/
 │   ├── 🎟️ components/     # Reusable UI components
 │   │   ├── 🤖 chatbot/    # AI assistant implementation
-│   │   └── ...         # Other components
+│   │   └── ...           # Other components
 │   ├── 🖼️ pages/          # Application pages
 │   ├── 🎨 styles/         # Global styles
 │   ├── ⚛️ App.jsx         # Main application component
@@ -103,12 +105,14 @@ Frontend/
 ├── ⚙️ nginx.conf          # Nginx configuration for production
 └── 📎 package.json        # Dependencies and scripts
 ```
+  </tr>
+</table>
 
 </div>
 
 ## 📋 Prerequisites
 
-<div align="center">
+<div>
 
 [![Node.js](https://img.shields.io/badge/Node.js-16.x%2B-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![npm](https://img.shields.io/badge/npm-latest-CB3837?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/)
@@ -147,7 +151,7 @@ VITE_RESUME_URL=<your-resume-url>
 
 ### Development
 
-<div align="center">
+<div>
 
 [![Vite](https://img.shields.io/badge/Start%20with-Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
@@ -175,7 +179,7 @@ The built files will be in the `dist` directory.
 
 ## 🐳 Docker
 
-<div align="center">
+<div>
 
 [![Docker](https://img.shields.io/badge/Run%20with-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 
@@ -184,17 +188,10 @@ docker build -t portfolio-frontend .
 docker run -p 3000:80 portfolio-frontend
 ```
 
-<img src="https://via.placeholder.com/800x150/1a1a2e/00b4d8?text=Containerized+Frontend" alt="Docker" style="border-radius:8px; margin-top:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+<img width="1470" alt="Screenshot 2025-05-25 at 11 35 45 PM" src="https://github.com/user-attachments/assets/5c1f48b2-d31f-4210-b27f-2c2a7233c9dc" />
 
 </div>
 
-## 📚 Key Components
-
-<div align="center">
-
-<img src="https://via.placeholder.com/800x200/1a1a2e/e94560?text=Interactive+Components" alt="Key Components" style="border-radius:8px; margin-bottom:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
-
-</div>
 
 ### Chatbot
 
@@ -203,28 +200,24 @@ The AI-powered chatbot assistant (`src/components/chatbot/Chatbot.jsx`) provides
 <div align="center">
 
 | Feature | Description |
-|---------|-------------|
+|:---------|:-------------|
 | 💬 **Real-time Messaging** | Interactive conversation interface |
 | 📝 **Markdown Rendering** | Formatted responses with syntax highlighting |
 | 👉 **Quick Responses** | Buttons for common questions |
 | 📱 **Mobile-friendly** | Adaptive keyboard and responsive design |
 
 </div>
+<img width="1449" alt="Screenshot 2025-05-25 at 11 35 32 PM" src="https://github.com/user-attachments/assets/24853c45-6ed2-4b04-be86-8e59ddb7278b" />
+
 
 ## 🌐 API Integration
-
-<div align="center">
-
-<img src="https://via.placeholder.com/800x200/1a1a2e/4CAF50?text=Backend+Integration" alt="API Integration" style="border-radius:8px; margin-bottom:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
-
-</div>
 
 The frontend communicates with the backend API for:
 
 <div align="center">
 
 | Integration | Purpose |
-|------------|---------|  
+|:------------|:---------|
 | 🤖 **Chatbot** | Sends messages and receives AI-generated responses |
 | 📧 **Contact Form** | Submits user inquiries with contact details |
 
@@ -239,7 +232,7 @@ The contact form (`src/components/contact/ContactForm.jsx`) provides a user-frie
 <div align="center">
 
 | Feature | Description |
-|---------|-------------|
+|:---------|:-------------|
 | ✅ **Form Validation** | Client-side validation for required fields and email format |
 | 💻 **Status Feedback** | Visual indicators for loading, success, and error states |
 | 📱 **Responsive Design** | Adapts to different screen sizes |
@@ -268,38 +261,30 @@ graph TD
 
 ## 🚢 Deployment
 
-<div align="center">
+<div>
 
 [![Deploy with Vercel](https://img.shields.io/badge/Deploy%20with-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/new/git/external)
 
 The frontend is configured for deployment on Vercel and is currently hosted at:
 
 [https://aswin-hariram.vercel.app/](https://aswin-hariram.vercel.app/)
+<img width="1449" alt="Screenshot 2025-05-25 at 11 30 50 PM" src="https://github.com/user-attachments/assets/5e673a72-d63a-47a8-a848-620e7149d2dc" />
 
-<img src="https://via.placeholder.com/800x150/1a1a2e/e94560?text=Live+on+Vercel" alt="Deployment" style="border-radius:8px; margin-top:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
 
-</div>
-
-## 📄 License
-
-<div align="center">
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-
-This project is licensed under the MIT License.
 
 </div>
 
----
-
-<div align="center">
-
-<img src="https://via.placeholder.com/150x150/1a1a2e/e94560?text=AH" width="100" height="100" style="border-radius:50%; margin-top:30px;">
 
 ### Developed by Aswin Hariram
 
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/your-username)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-profile)
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://aswin-hariram.vercel.app/)
+<a href="https://github.com/aswinhariram" target="_blank" style="display:inline-block; margin: 0 8px;">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+</a>
+<a href="https://linkedin.com/in/your-profile" target="_blank" style="display:inline-block; margin: 0 8px;">
+  <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+</a>
+<a href="https://aswin-hariram.vercel.app/" target="_blank" style="display:inline-block; margin: 0 8px;">
+  <img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" />
+</a>
 
 </div>
