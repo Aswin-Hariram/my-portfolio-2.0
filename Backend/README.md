@@ -9,7 +9,7 @@
 [![LangChain](https://img.shields.io/badge/LangChain-FF6B00?style=for-the-badge&logo=chainlink&logoColor=white)](https://python.langchain.com/)
 [![FAISS](https://img.shields.io/badge/FAISS-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://faiss.ai/)
 
-<img src="https://via.placeholder.com/1200x400/1a1a2e/00b4d8?text=Aswin's+Portfolio+Backend+API" alt="Backend Banner" style="border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+<img width="1455" alt="Screenshot 2025-05-25 at 11 29 31 PM" src="https://github.com/user-attachments/assets/8656597d-36d1-4e84-be9f-b358673940db" />
 
 ### A robust backend service powering Aswin's portfolio, featuring an AI chatbot, 
 ### document processing, and API endpoints. Built with Python, Flask, and Google Gemini AI.
@@ -59,7 +59,7 @@
 
 ### Key Dependencies
 
-<div align="center">
+<div>
 
 ```python
 # requirements.txt
@@ -89,7 +89,7 @@ markdown
 
 ## 🏗️ Project Structure
 
-<div align="center">
+<div>
 
 ```
 Backend/
@@ -162,7 +162,7 @@ NOTIFICATION_NUMBER=your_notification_phone_number
 
 ### Running the Server
 
-<div align="center">
+<div>
 
 #### Development Mode
 
@@ -196,8 +196,6 @@ docker run -p 8001:8001 portfolio-backend
 ## 🌐 API Endpoints
 
 <div align="center">
-
-<img src="https://via.placeholder.com/800x200/1a1a2e/00b4d8?text=RESTful+API+Endpoints" alt="API Endpoints" style="border-radius:8px; margin-bottom:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
 
 </div>
 
@@ -261,7 +259,7 @@ docker run -p 8001:8001 portfolio-backend
 
 ## 🧪 Testing
 
-<div align="center">
+<div >
 
 ### Manual Testing
 
@@ -281,8 +279,6 @@ curl -X POST http://localhost:8001/contact \
   -H "Content-Type: application/json" \
   -d '{"name":"Test User","email":"test@example.com","message":"Test message"}'
 ```
-
-<img src="https://via.placeholder.com/800x150/1a1a2e/4CAF50?text=API+Testing" alt="Testing" style="border-radius:8px; margin-top:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
 
 </div>
 
@@ -306,7 +302,7 @@ curl -X POST http://localhost:8001/contact \
 
 ## 🚀 Deployment
 
-<div align="center">
+<div>
 
 ### Docker
 
@@ -322,51 +318,14 @@ docker run -d -p 8001:8001 --env-file .env portfolio-backend
 
 The Dockerfile is configured to use the official Python 3.9 slim image and sets up the necessary environment for running the application with Gunicorn.
 
-<img src="https://via.placeholder.com/800x150/1a1a2e/e94560?text=Ready+for+Production" alt="Deployment" style="border-radius:8px; margin-top:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+<img width="1470" alt="Screenshot 2025-05-25 at 11 59 28 PM" src="https://github.com/user-attachments/assets/224e83df-04b5-4491-b233-f247c29ae899" />
 
 </div>
 
 ---
 
-<div align="center">
+<div>
 
-<img src="https://via.placeholder.com/150x150/1a1a2e/e94560?text=AH" width="100" height="100" style="border-radius:50%; margin-top:30px;">
-
-### Developed by Aswin Hariram
-
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/your-username)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-profile)
-
-</div>
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: portfolio-backend
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: portfolio-backend
-  template:
-    metadata:
-      labels:
-        app: portfolio-backend
-    spec:
-      containers:
-      - name: portfolio-backend
-        image: your-username/portfolio-backend:latest
-        ports:
-        - containerPort: 5000
-        envFrom:
-        - secretRef:
-            name: backend-secrets
-```
-
-## 📚 Documentation
-
-This README serves as the primary documentation for the backend service. The code is also well-commented to help with understanding the implementation details.
 
 ### Key Components
 
@@ -385,11 +344,8 @@ Contributions are welcome! To contribute to this project:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🙏 Acknowledgments
+   
+##  Acknowledgments
 
 - [Flask](https://flask.palletsprojects.com/) - The web framework used
 - [LangChain](https://python.langchain.com/) - For AI orchestration capabilities
