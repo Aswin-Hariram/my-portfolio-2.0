@@ -1,6 +1,7 @@
 # Aswin Hariram - Portfolio v2.0
 
-![Portfolio Banner](https://via.placeholder.com/1200x400/1a1a2e/e94560?text=Aswin+Hariram+Portfolio)
+
+<img width="1455" alt="Screenshot 2025-05-25 at 10 03 04 PM" src="https://github.com/user-attachments/assets/a40c0ec8-fcc8-44d9-b9eb-4c39b29c3784" />
 
 A modern, responsive portfolio website showcasing my projects, skills, and experience. Built with React, Vite, and Flask, featuring an AI-powered chatbot and interactive UI components.
 
