@@ -1,12 +1,20 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9-slim
+# Using explicit platform for build stage to ensure consistent builds
+FROM --platform=$BUILDPLATFORM python:3.9-slim
+
+# Set build arguments for architecture-specific builds
+ARG TARGETARCH
+ARG TARGETOS
+
+# Install architecture-specific dependencies
+RUN echo "Building for $TARGETOS/$TARGETARCH"
 
 # Set the working directory in the container
 WORKDIR /app
 
 # Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
 

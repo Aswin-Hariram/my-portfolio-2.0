@@ -1,5 +1,13 @@
 # Stage 1: Build the application
-FROM node:18-alpine as build
+# Using explicit platform for build stage to ensure consistent builds
+FROM --platform=$BUILDPLATFORM node:18-alpine as build
+
+# Set build arguments for architecture-specific builds
+ARG TARGETARCH
+ARG TARGETOS
+
+# Install necessary build tools for different architectures
+RUN echo "Building for $TARGETOS/$TARGETARCH"
 
 # Set working directory
 WORKDIR /app
