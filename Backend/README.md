@@ -35,7 +35,8 @@
 | 🐳 **Docker Support** | Containerized deployment ready |
 | 📝 **Logging** | Comprehensive logging for debugging and monitoring |
 
-<img src="https://via.placeholder.com/800x250/1a1a2e/e94560?text=AI+Powered+Backend" alt="AI Backend" style="border-radius:8px; margin-top:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+<img width="1449" alt="Screenshot 2025-05-25 at 11 35 32 PM" src="https://github.com/user-attachments/assets/08d94277-e5fe-4be3-a3e8-381629bd2bad" />
+
 
 </div>
 
