@@ -11,9 +11,11 @@ services:
       - "3000:80"
     environment:
       - NODE_ENV=production
+      # For external access from browser
       - VITE_API_URL=${VITE_API_URL:-http://localhost:5001}
       - VITE_CHAT_API_URL=${VITE_CHAT_API_URL:-http://localhost:5001/chat}
-      - VITE_Contact_URL=${VITE_Contact_URL:-http://localhost:5001/contact}
+      - VITE_CONTACT_URL=${VITE_CONTACT_URL:-http://localhost:5001/contact}
+      - VITE_RESUME_URL=${VITE_RESUME_URL:-https://drive.google.com/file/d/15oiB_aswF5fdKCB2Db7Yu6pJE54bBHXM/view?usp=sharing}
     depends_on:
       - backend
     networks:
@@ -26,10 +28,11 @@ services:
     container_name: portfolio-backend
     restart: unless-stopped
     ports:
-      - "5001:5000"
+      - "5001:5001"
     environment:
       - FLASK_ENV=production
       - PYTHONUNBUFFERED=1
+      - PORT=5001
       # Add other environment variables from Backend/.env if needed
     volumes:
       - ./Backend:/app

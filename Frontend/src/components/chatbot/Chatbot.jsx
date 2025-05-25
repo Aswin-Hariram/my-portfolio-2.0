@@ -17,15 +17,27 @@ const Chatbot = () => {
   // API integration for bot responses
   const getBotResponse = async (inputText) => {
     try {
-      const response = await fetch(import.meta.env.VITE_CHAT_API_URL, {
+      console.log('Sending request to:', import.meta.env.VITE_CHAT_API_URL);
+      
+      // Fallback URL if environment variable is undefined
+      const apiUrl = import.meta.env.VITE_CHAT_API_URL || 'http://localhost:5001/chat';
+      
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Accept": "application/json"
         },
         body: JSON.stringify({ question: inputText })
       });
 
+      if (!response.ok) {
+        throw new Error(`API responded with status: ${response.status}`);
+      }
+
       const data = await response.json();
+      console.log('API response:', data);
+      
       return data.status === "success" ? data.answer : "Sorry, I couldn't process your request at the moment.";
     } catch (error) {
       console.error("Error fetching bot response:", error);
