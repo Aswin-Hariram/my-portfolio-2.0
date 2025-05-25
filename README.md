@@ -9,7 +9,7 @@
 [![SASS](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
 [![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)](https://openai.com/)
 
-<img width="1455" alt="Portfolio Screenshot" src="https://github.com/user-attachments/assets/a40c0ec8-fcc8-44d9-b9eb-4c39b29c3784" />
+<img width="100%" alt="Portfolio Screenshot" src="https://github.com/user-attachments/assets/a40c0ec8-fcc8-44d9-b9eb-4c39b29c3784" />
 
 ### A modern, responsive portfolio website showcasing my projects, skills, and experience.
 ### Built with React, Vite, and Flask, featuring an AI-powered chatbot and interactive UI components.
@@ -21,8 +21,6 @@
 
 ## ✨ Features
 
-<div align="center">
-
 | Feature | Description |
 |---------|-------------|
 | 🎨 **Modern UI/UX** | Smooth animations using Framer Motion |
@@ -33,11 +31,7 @@
 | 🌓 **Dark/Light Mode** | Theme switching capability |
 | ⚡ **Performance Optimized** | Built with Vite for lightning-fast loading |
 
-</div>
-
 ## 🛠️ Tech Stack
-
-<div align="center">
 
 ### Frontend
 
@@ -62,11 +56,7 @@
 [![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com/)
 [![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)](https://www.netlify.com/)
 
-</div>
-
 ## 🚀 Getting Started
-
-<div align="center">
 
 ### Prerequisites
 
@@ -74,8 +64,6 @@
 [![Python](https://img.shields.io/badge/Python%203.10+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)](https://git-scm.com/)
-
-</div>
 
 ### Local Development
 
@@ -87,6 +75,14 @@
 git clone https://github.com/your-username/portfolio-v2.git
 cd portfolio-v2
 ```
+<details>
+<summary>📋 Copy</summary>
+
+```bash
+git clone https://github.com/your-username/portfolio-v2.git
+cd portfolio-v2
+```
+</details>
 
 #### 2. Set up the Backend
 ```bash
@@ -95,12 +91,30 @@ python -m venv venv
 source venv/bin/activate  # On Windows: .\venv\Scripts\activate
 pip install -r requirements.txt
 ```
+<details>
+<summary>📋 Copy</summary>
+
+```bash
+cd Backend
+python -m venv venv
+source venv/bin/activate  # On Windows: .\venv\Scripts\activate
+pip install -r requirements.txt
+```
+</details>
 
 #### 3. Set up the Frontend
 ```bash
 cd ../Frontend
 npm install
 ```
+<details>
+<summary>📋 Copy</summary>
+
+```bash
+cd ../Frontend
+npm install
+```
+</details>
 
 #### 4. Environment Variables
 Create a `.env` file in the Backend directory with the following variables:
@@ -110,6 +124,16 @@ FLASK_ENV=development
 OPENAI_API_KEY=your_openai_api_key
 GOOGLE_APPLICATION_CREDENTIALS=path/to/your/service-account.json
 ```
+<details>
+<summary>📋 Copy</summary>
+
+```
+FLASK_APP=app.py
+FLASK_ENV=development
+OPENAI_API_KEY=your_openai_api_key
+GOOGLE_APPLICATION_CREDENTIALS=path/to/your/service-account.json
+```
+</details>
 
 #### 5. Run the Application
 - In one terminal (Backend):
@@ -117,60 +141,92 @@ GOOGLE_APPLICATION_CREDENTIALS=path/to/your/service-account.json
   cd Backend
   flask run
   ```
+  <details>
+  <summary>📋 Copy</summary>
+
+  ```bash
+  cd Backend
+  flask run
+  ```
+  </details>
 - In another terminal (Frontend):
   ```bash
   cd Frontend
   npm run dev
   ```
+  <details>
+  <summary>📋 Copy</summary>
+
+  ```bash
+  cd Frontend
+  npm run dev
+  ```
+  </details>
 </details>
 
 ### Using Docker
 
-<div align="center">
-
 [![Docker](https://img.shields.io/badge/Run%20with-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-
-</div>
 
 ```bash
 docker-compose up --build
 ```
+<details>
+<summary>📋 Copy</summary>
 
-<div align="center">
+```bash
+docker-compose up --build
+```
+</details>
 
-#### The application will be available at [`http://localhost:5173`](http://localhost:5173)
-
-</div>
+The application will be available at [http://localhost:5173](http://localhost:5173)
 
 ## 📦 Project Structure
 
-<div align="center">
-
 ```
 portfolio-v2/
-├── 🔥 Backend/               # Flask backend
+├── Backend/               # Flask backend
 │   ├── app.py                # Main application
 │   ├── bot.py                # Chatbot implementation
 │   ├── chat_handler.py       # Chat request handlers
 │   ├── contact_handler.py    # Contact form handlers
 │   └── requirements.txt      # Python dependencies
-├── ⚛️ Frontend/              # React frontend
+├── Frontend/              # React frontend
 │   ├── public/               # Static assets
 │   └── src/                  # Source code
 │       ├── components/       # Reusable components
 │       ├── pages/            # Page components
 │       ├── styles/           # Global styles
 │       └── App.jsx           # Main App component
-├── 🐳 docker-compose.yml     # Docker Compose config
-├── 📚 docs/                  # Documentation
-└── 📝 README.md              # This file
+├── docker-compose.yml     # Docker Compose config
+├── docs/                  # Documentation
+└── README.md              # This file
 ```
+<details>
+<summary>📋 Copy</summary>
 
-</div>
+```
+portfolio-v2/
+├── Backend/               # Flask backend
+│   ├── app.py                # Main application
+│   ├── bot.py                # Chatbot implementation
+│   ├── chat_handler.py       # Chat request handlers
+│   ├── contact_handler.py    # Contact form handlers
+│   └── requirements.txt      # Python dependencies
+├── Frontend/              # React frontend
+│   ├── public/               # Static assets
+│   └── src/                  # Source code
+│       ├── components/       # Reusable components
+│       ├── pages/            # Page components
+│       ├── styles/           # Global styles
+│       └── App.jsx           # Main App component
+├── docker-compose.yml     # Docker Compose config
+├── docs/                  # Documentation
+└── README.md              # This file
+```
+</details>
 
 ## 🤖 AI Chatbot Features
-
-<div align="center">
 
 ![AI Chatbot](https://via.placeholder.com/800x400/1a1a2e/00b4d8?text=AI+Powered+Chatbot)
 
@@ -183,11 +239,7 @@ The portfolio includes an AI-powered chatbot with the following capabilities:
 | 🧠 **Context Awareness** | Remembers conversation history |
 | 🔄 **Multi-Provider** | Works with OpenAI and Google AI |
 
-</div>
-
 ## 🌐 Deployment
-
-<div align="center">
 
 ### Vercel (Recommended)
 
@@ -208,28 +260,18 @@ The portfolio includes an AI-powered chatbot with the following capabilities:
 4. Add environment variables
 5. Deploy site
 
-</div>
-
 ## 📝 License
-
-<div align="center">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-</div>
-
 ## 🙏 Acknowledgments
-
-<div align="center">
 
 [![Vite](https://img.shields.io/badge/Vite-B73BFE?style=flat-square&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
 [![Framer Motion](https://img.shields.io/badge/Framer%20Motion-0055FF?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion/)
 [![LangChain](https://img.shields.io/badge/LangChain-FF6B00?style=flat-square&logo=chainlink&logoColor=white)](https://www.langchain.com/)
 [![React Icons](https://img.shields.io/badge/React%20Icons-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react-icons.github.io/react-icons/)
-
-</div>
 
 ---
 
