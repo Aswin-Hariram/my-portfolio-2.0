@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    container_name: portfolio-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+      - VITE_API_URL=${VITE_API_URL:-http://localhost:5001}
+      - VITE_CHAT_API_URL=${VITE_CHAT_API_URL:-http://localhost:5001/chat}
+      - VITE_Contact_URL=${VITE_Contact_URL:-http://localhost:5001/contact}
+    depends_on:
+      - backend
+    networks:
+      - portfolio-network
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: portfolio-backend
+    restart: unless-stopped
+    ports:
+      - "5001:5000"
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+      # Add other environment variables from Backend/.env if needed
+    volumes:
+      - ./Backend:/app
+      - /app/__pycache__
+    networks:
+      - portfolio-network
+    # Uncomment and add the following if you need to use the host network for specific services
+    # network_mode: "host"
+
+networks:
+  portfolio-network:
+    driver: bridge

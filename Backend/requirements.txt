@@ -1,0 +1,16 @@
+Flask
+Flask-Cors
+gunicorn
+python-dotenv
+langchain-core
+langchain-community
+langchain_google_genai
+faiss-cpu
+PyPDF2
+langchain-openai
+pdfminer.six
+chromadb
+requests
+google-cloud-aiplatform
+twilio
+markdown
