@@ -47,8 +47,9 @@
 ### DevOps
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com/)
 [![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white)](https://github.com/features/actions)
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-2496ED?style=flat-square&logo=docker&logoColor=white)](https://hub.docker.com/)
 [![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com/)
-[![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)](h
+[![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)]
 
 ## 🚦 Getting Started
 
@@ -206,6 +207,26 @@ portfolio-v2/
 - Set Python buildpack
 - Add `.env` variables
 - Deploy via GitHub or CLI
+
+## 🚀 Automated Docker Builds with GitHub Actions
+
+This project uses GitHub Actions to automatically build and push Docker images to Docker Hub on every push to the `main` branch. The workflow is defined in `.github/workflows/docker-build-push.yml`.
+
+### How It Works
+
+1. On every push to `main`, the workflow is triggered
+2. Sets up Docker Buildx for multi-architecture builds
+3. Logs into Docker Hub using your credentials
+4. Builds and pushes both frontend and backend images with `linux/amd64` and `linux/arm64` support
+5. Tags all images as `latest`
+
+### Manual Trigger
+
+You can also manually trigger the workflow from the GitHub Actions tab in your repository.
+
+### Viewing Build Status
+
+Check the status of your builds in the "Actions" tab of your GitHub repository.
 
 ## 🤖 AI Chatbot Features
 
