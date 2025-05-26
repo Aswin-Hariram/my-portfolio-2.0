@@ -65,8 +65,8 @@
 #### 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-username/portfolio-v2.git
-cd portfolio-v2
+git clone https://github.com/Aswin-Hariram/my-portfolio-2.0
+cd my-portfolio-2.0
 ```
 
 #### 2. Backend Setup
