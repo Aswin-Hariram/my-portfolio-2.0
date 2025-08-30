@@ -73,7 +73,8 @@ const skillsData = [
         category: "AI & Machine Learning",
         skills: [
             "Python",
-            "TensorFlow",
+          "Langchain",
+          "LangGraph",
             "AI Automation",
             "LLMs",
             "PyTorch",
