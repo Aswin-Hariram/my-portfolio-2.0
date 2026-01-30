@@ -59,7 +59,7 @@ def create_chain(vectorStore):
     """Creates a history-aware retriever chain that will be used for chat."""
     try:
         model = ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash",
+            model="gemini-3.0-flash",
             temperature=0.9
         )
 
