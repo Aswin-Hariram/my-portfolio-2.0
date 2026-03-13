@@ -59,8 +59,8 @@ def create_chain(vectorStore):
     """Creates a history-aware retriever chain that will be used for chat."""
     try:
         model = ChatGoogleGenerativeAI(
-            model="gemini-3.0-flash",
-            temperature=0.9
+            model="gemini-2.5-flash",
+            temperature=0.7
         )
 
         prompt = ChatPromptTemplate.from_messages([

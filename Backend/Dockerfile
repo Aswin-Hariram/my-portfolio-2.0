@@ -1,40 +1,44 @@
-# Use an official Python runtime as a parent image
-# Using explicit platform for build stage to ensure consistent builds
-ARG PYTHON_VERSION=3.9-slim
+# Use latest stable Python
+ARG PYTHON_VERSION=3.12-slim
 FROM --platform=$TARGETPLATFORM python:${PYTHON_VERSION}
 
-# Set build arguments for architecture-specific builds
+# Build arguments
 ARG TARGETARCH
 ARG TARGETOS
 ARG TARGETPLATFORM
 
-# Install architecture-specific dependencies
 RUN echo "Building for $TARGETPLATFORM"
 
-# Set the working directory in the container
+# Set working directory
 WORKDIR /app
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-ENV FLASK_APP=app.py
-ENV FLASK_ENV=production
+# Environment settings
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    FLASK_APP=app.py \
+    FLASK_ENV=production \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    gcc \
+    build-essential \
     python3-dev \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements file and install Python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Upgrade pip first (important)
+RUN pip install --upgrade pip
 
-# Copy the rest of the application
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Copy project
 COPY . .
 
-# Expose the port the app runs on
+# Expose Flask/Gunicorn port
 EXPOSE 8001
 
-# Command to run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:8001", "app:app"]
+# Production server
+CMD ["gunicorn", "-w", "4", "-k", "gthread", "--threads", "4", "--bind", "0.0.0.0:8001", "app:app"]
