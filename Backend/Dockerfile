@@ -1,5 +1,5 @@
 # Use latest stable Python
-ARG PYTHON_VERSION=3.11-slim
+ARG PYTHON_VERSION=3.9-slim
 FROM --platform=$TARGETPLATFORM python:${PYTHON_VERSION}
 
 # Build arguments
