@@ -6,16 +6,15 @@ from functools import lru_cache
 import PyPDF2
 
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.prompts import ChatPromptTemplate
-from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
-from langchain_community.vectorstores.faiss import FAISS
-from langchain.chains import create_retrieval_chain
-from langchain.docstore.document import Document
-from langchain_core.prompts import MessagesPlaceholder
+from langchain_core.documents import Document
 from langchain_core.messages import HumanMessage, AIMessage
-from langchain.chains.history_aware_retriever import create_history_aware_retriever
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_community.vectorstores.faiss import FAISS
+from langchain_classic.chains import create_retrieval_chain
+from langchain_classic.chains.combine_documents import create_stuff_documents_chain
+from langchain_classic.chains.history_aware_retriever import create_history_aware_retriever
+from langchain_classic.text_splitter import RecursiveCharacterTextSplitter
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 # Get logger from main application
 logger = logging.getLogger(__name__)

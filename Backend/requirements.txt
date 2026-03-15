@@ -4,6 +4,7 @@ gunicorn
 python-dotenv
 langchain-core
 langchain-community
+langchain-classic
 langchain_google_genai
 faiss-cpu
 PyPDF2
