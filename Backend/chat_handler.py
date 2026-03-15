@@ -1,4 +1,5 @@
 import logging
+import os
 import time
 from flask import request, jsonify, session
 from functools import lru_cache
@@ -18,6 +19,19 @@ from langchain.chains.history_aware_retriever import create_history_aware_retrie
 
 # Get logger from main application
 logger = logging.getLogger(__name__)
+
+DEFAULT_EMBEDDING_MODEL = "gemini-embedding-001"
+DEFAULT_CHAT_MODEL = "gemini-2.5-flash"
+
+
+def get_google_api_key():
+    """Support either GOOGLE_API_KEY or GEMINI_API_KEY."""
+    return os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY")
+
+
+def get_embedding_model():
+    """Resolve the embedding model, defaulting to Gemini's supported embedding model."""
+    return os.environ.get("GOOGLE_EMBEDDING_MODEL", DEFAULT_EMBEDDING_MODEL)
 
 # Cache for document processing to improve performance
 @lru_cache(maxsize=1)
@@ -47,19 +61,33 @@ def create_db(docs):
     """Creates a vector store from the documents."""
     try:
         start_time = time.time()
-        embedding = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+        embedding_model = get_embedding_model()
+        logger.info(f"Creating vector store with embedding model '{embedding_model}'")
+        embedding = GoogleGenerativeAIEmbeddings(
+            model=embedding_model,
+            google_api_key=get_google_api_key(),
+        )
         vectorStore = FAISS.from_documents(docs, embedding=embedding)
         logger.info(f"Vector store created in {time.time() - start_time:.2f} seconds")
         return vectorStore
     except Exception as e:
-        logger.error(f"Error creating vector store: {str(e)}")
-        raise
+        message = str(e)
+        if "not found" in message and "embed" in message.lower():
+            message = (
+                f"{message}. Configure GOOGLE_EMBEDDING_MODEL with a supported "
+                f"Gemini embedding model such as '{DEFAULT_EMBEDDING_MODEL}'."
+            )
+        logger.error(f"Error creating vector store: {message}")
+        raise RuntimeError(message) from e
 
 def create_chain(vectorStore):
     """Creates a history-aware retriever chain that will be used for chat."""
     try:
+        chat_model = os.environ.get("GOOGLE_CHAT_MODEL", DEFAULT_CHAT_MODEL)
+        logger.info(f"Creating chat chain with model '{chat_model}'")
         model = ChatGoogleGenerativeAI(
-            model="gemini-2.5-flash",
+            model=chat_model,
+            api_key=get_google_api_key(),
             temperature=0.7
         )
 

@@ -15,9 +15,11 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", os.urandom(24))  # For session management
-CORS(app, supports_credentials=True)  # Enable credentials for session cookies
+# Allow the frontend running on localhost:3000 to access this API
+CORS(app, origins=["http://localhost:3000"], supports_credentials=True)  # Enable credentials for session cookies
 
 # Initialize global variables
+chain = None
 try:
     pdf_path = os.environ.get("PDF_PATH", 'document.pdf')
     chain = initialize_chat(pdf_path)
@@ -35,7 +37,14 @@ def home():
     })
 
 @app.route('/chat', methods=['POST'])
+
 def chat():
+    if chain is None:
+        return jsonify({
+            'answer': None,
+            'status': 'error',
+            'message': 'Chat service not initialized. Check server logs for initialization errors.'
+        }), 500
     return handle_chat(chain)
 
 @app.route('/reset', methods=['POST'])
@@ -47,5 +56,5 @@ def contact():
     return handle_contact()
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8001))  # Default to 8000 for local dev
+    port = int(os.environ.get("PORT", 5001))  # Default to 8000 for local dev
     app.run(host="0.0.0.0", port=port)
