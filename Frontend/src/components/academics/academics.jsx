@@ -39,7 +39,7 @@ const itemVariants = {
 // Sample academic Academics data - replace with your own
 const AcademicsData = [
     {
-        year: "2024 - Present",
+        year: "2023 - Present",
         degree: "Bachelor of Engineering in Computer Science",
         institution: "Sri Krishna College of Technology, Coimbatore",
         description: "Focusing on advanced programming, data structures, and modern web development technologies."
