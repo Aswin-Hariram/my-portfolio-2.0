@@ -20,25 +20,27 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# Install system dependencies
+# Install minimal system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    python3-dev \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip first (important)
+# Upgrade pip
 RUN pip install --upgrade pip
 
 # Install Python dependencies
 COPY requirements.txt .
 RUN pip install --root-user-action=ignore -r requirements.txt
 
-# Copy project
+# Copy project files
 COPY . .
 
-# Expose Flask/Gunicorn port
+# Create non-root user
+RUN useradd -m appuser
+USER appuser
+
+# Expose Flask port
 EXPOSE 8001
 
-# Production server
+# Start Gunicorn
 CMD ["gunicorn", "-w", "4", "-k", "gthread", "--threads", "4", "--bind", "0.0.0.0:8001", "app:app"]
