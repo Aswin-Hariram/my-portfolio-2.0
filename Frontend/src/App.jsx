@@ -23,7 +23,7 @@ const App = () => {
     // Simulate loading time or wait for assets
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500); // 2.5 seconds loading time
+    }, 5000); // 5 seconds loading time
 
     return () => clearTimeout(timer);
   }, []);
