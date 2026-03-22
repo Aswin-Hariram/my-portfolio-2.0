@@ -291,42 +291,66 @@ const Portfolio = () => {
       description: "AI-powered writing assistant with advanced content generation capabilities.",
       image: "/Writezy.png",
       tags: ["React", "AI", "Node.js"],
-      link: "https://github.com/Aswin-Hariram/Writezy_Web"
+      link: "https://github.com/Aswin-Hariram/Writezy_Web",
+      category: "AI Platform",
+      year: "2025",
+      status: "Featured",
+      summary: "Content generation, editing workflows, and a polished product feel."
     },
     {
       title: "EzMark",
       description: "Biometric attendance system with facial recognition technology.",
       image: "/EzMark.jpeg",
       tags: ["Python", "OpenCV", "React"],
-      link: "https://github.com/Aswin-Hariram/EzMark"
+      link: "https://github.com/Aswin-Hariram/EzMark",
+      category: "Vision System",
+      year: "2024",
+      status: "Production Ready",
+      summary: "Attendance automation backed by real-world recognition flows."
     },
     {
       title: "Nector",
       description: "Social media platform focused on connecting creative professionals.",
       image: "/Nector.png",
       tags: ["React Native", "Firebase", "Redux"],
-      link: "https://github.com/Aswin-Hariram/nector"
+      link: "https://github.com/Aswin-Hariram/nector",
+      category: "Mobile Product",
+      year: "2024",
+      status: "Concept Build",
+      summary: "A mobile-first network for creators, profiles, and discovery."
     },
     {
       title: "OCR Tool",
       description: "Optical Character Recognition tool for extracting text from images.",
       image: "/Ocr.png",
       tags: ["Python", "TensorFlow", "Flask"],
-      link: "https://github.com/Aswin-Hariram/OCRGenie"
+      link: "https://github.com/Aswin-Hariram/OCRGenie",
+      category: "AI Utility",
+      year: "2024",
+      status: "Utility App",
+      summary: "Fast document parsing with an accessible frontend wrapper."
     },
     {
       title: "Food Delivery App",
       description: "Mobile application for ordering food from local restaurants.",
       image: "/Food.png",
       tags: ["React Native", "Node.js", "MongoDB"],
-      link: "#"
+      link: "#",
+      category: "Mobile Commerce",
+      year: "2023",
+      status: "Private",
+      summary: "Ordering flow, cart UX, and restaurant-side service logic."
     },
     {
       title: "AI Chatbot",
       description: "Intelligent conversational agent for customer support.",
       image: "/Bot.png",
       tags: ["Python", "NLP", "React"],
-      link: "https://github.com/Aswin-Hariram/my-first-Portfolio"
+      link: "https://github.com/Aswin-Hariram/my-first-Portfolio",
+      category: "Conversational AI",
+      year: "2023",
+      status: "Shipped",
+      summary: "Intent handling, prompt flow design, and frontend integration."
     }
   ];
 
@@ -574,6 +598,10 @@ const Portfolio = () => {
                 className="projectCard"
               >
                 <div className="imageContainer">
+                  <div className="previewTop">
+                    <span className="previewIndex">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="previewStatus">{project.status}</span>
+                  </div>
                   <img 
                     src={project.image} 
                     alt={project.title} 
@@ -587,27 +615,51 @@ const Portfolio = () => {
                     }}
                     style={{ opacity: 0, transition: 'opacity 0.3s ease' }} // Add transition for smooth appearance
                   />
+                  <div className="imageGlass">
+                    <span>{project.category}</span>
+                    <span>{project.year}</span>
+                  </div>
                   <div className="overlay">
                     <a 
                       href={project.link}
-                      className="viewButton"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      className={`viewButton ${project.link === "#" ? "disabled" : ""}`}
+                      target={project.link === "#" ? undefined : "_blank"}
+                      rel={project.link === "#" ? undefined : "noopener noreferrer"}
                     >
-                      <span className="button-text">View Project</span>
+                      <span className="button-text">
+                        {project.link === "#" ? "Private Project" : "View Project"}
+                      </span>
                       <span className="button-icon">→</span>
                     </a>
                   </div>
                 </div>
                 <div className="contentContainer">
-                  <h2>{project.title}</h2>
+                  <div className="cardHeader">
+                    <div>
+                      <span className="metaLabel">{project.category}</span>
+                      <h2>{project.title}</h2>
+                    </div>
+                    <span className="yearBadge">{project.year}</span>
+                  </div>
                   <p>{project.description}</p>
+                  <div className="projectSummary">{project.summary}</div>
                   <div className="tags">
                     {project.tags.map((tag, tagIndex) => (
                       <span key={tagIndex} className="tag">
                         {tag}
                       </span>
                     ))}
+                  </div>
+                  <div className="projectFooter">
+                    <span className="footerNote">Preview UI enhanced</span>
+                    <a
+                      href={project.link}
+                      className={`footerLink ${project.link === "#" ? "disabled" : ""}`}
+                      target={project.link === "#" ? undefined : "_blank"}
+                      rel={project.link === "#" ? undefined : "noopener noreferrer"}
+                    >
+                      {project.link === "#" ? "Unavailable" : "Open"}
+                    </a>
                   </div>
                 </div>
               </div>
