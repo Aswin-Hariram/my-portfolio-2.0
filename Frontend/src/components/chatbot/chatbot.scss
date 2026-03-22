@@ -401,6 +401,7 @@
     border: 1px solid rgba(255, 255, 255, 0.06);
     background: rgba(255, 255, 255, 0.05);
     color: #eef2fc;
+    overflow: hidden;
   }
 
   .message-label,
@@ -417,6 +418,7 @@
     font-size: 0.95rem;
     line-height: 1.65;
     color: inherit;
+    min-width: 0;
 
     p,
     ul,
@@ -428,6 +430,20 @@
     ul:last-child,
     ol:last-child {
       margin-bottom: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      margin: 0.5rem 0;
+      border-radius: 14px;
+      object-fit: cover;
+    }
+
+    a {
+      overflow-wrap: anywhere;
     }
   }
 
