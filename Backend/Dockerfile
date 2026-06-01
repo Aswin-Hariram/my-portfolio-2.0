@@ -14,7 +14,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install --upgrade pip
 
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+
+RUN pip install -r requirements.txt && \
+    pip install gunicorn
 
 COPY . .
 
@@ -23,4 +25,4 @@ USER appuser
 
 EXPOSE 8001
 
-CMD ["python","app.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8001", "--workers", "2", "--threads", "4", "app:app"]
